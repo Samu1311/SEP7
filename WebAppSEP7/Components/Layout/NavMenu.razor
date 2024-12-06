@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@inject NavigationManager NavigationManager
+
+<nav class="navbar navbar-expand-lg bg-primary">
+    <a class="navbar-brand" href="/">Gjensidige</a>
+
+    <!-- Toggler for Mobile View -->
+    <button
+        class="navbar-toggler"
+        type="button"
+        @onclick="ToggleNavbar"
+        aria-controls="navbarNav"
+        aria-expanded="@isNavbarExpanded.ToString().ToLower()"
+        aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse @(isNavbarExpanded ? "show" : "")" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <NavLink class="nav-link" href="/about-us" Match="NavLinkMatch.All">About</NavLink>
+            </li>
+            <li class="nav-item">
+                <NavLink class="nav-link" href="/services">Services</NavLink>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+@code {
+    private bool isNavbarExpanded = false;
+
+    private void ToggleNavbar()
+    {
+        isNavbarExpanded = !isNavbarExpanded;
+    }
+}

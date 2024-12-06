@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\WebApiSEP7.props" />
+</Project>

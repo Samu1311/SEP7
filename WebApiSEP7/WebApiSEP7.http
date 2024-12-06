@@ -1,0 +1,6 @@
+@WebApiSEP7_HostAddress = http://localhost:5148
+
+GET {{WebApiSEP7_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

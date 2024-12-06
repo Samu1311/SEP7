@@ -1,0 +1,349 @@
+/* _content/WebAppSEP7/Components/Layout/BottomMenu.razor.rz.scp.css */
+/* Bottom Navigation Bar */
+.bottom-nav[b-dz010fr5e9] {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 50px; /* Reduced height */
+    background-color: #001f40; /* Dark Blue Background */
+    padding: 5px 0; /* Adjusted padding */
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Bottom Navigation Buttons */
+.bottom-nav .btn[b-dz010fr5e9] {
+    width: 180px; /* Wider buttons */
+    height: 35px; /* Reduced height for buttons */
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem; /* Adjusted font size */
+    font-weight: bold;
+    color: white;
+    background-color: #003063; /* Primary Blue */
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline for links */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin-top: 2px;
+}
+
+.bottom-nav .btn i[b-dz010fr5e9] {
+    font-size: 1.2rem;
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.bottom-nav .btn:hover[b-dz010fr5e9] {
+    background-color: #005a70; /* Darker Blue */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.bottom-nav .btn:active[b-dz010fr5e9] {
+    transform: translateY(0); /* Reset on click */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+/* _content/WebAppSEP7/Components/Layout/MainLayout.razor.rz.scp.css */
+/* Page Container: Ensures full viewport height layout */
+.page-container[b-f28uy6oihf] {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Main Content Area */
+.main-content[b-f28uy6oihf] {
+    flex: 1; /* Expands to fill available space */
+    padding: 1rem;
+    overflow-y: auto; /* Scrollable if content exceeds height */
+    background-color: #f9f9f9; /* Light background for better readability */
+        padding-bottom: 70px; /* Space for the bottom navigation bar */
+}
+
+/* Footer Styling */
+.footer[b-f28uy6oihf] {
+    background-color: #f8f9fa; /* Light background */
+    color: #6c757d; /* Muted text color */
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #e9ecef; /* Subtle border for separation */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+    .footer[b-f28uy6oihf] {
+        font-size: 0.8rem; /* Slightly smaller footer text on smaller screens */
+    }
+}
+/* _content/WebAppSEP7/Components/Layout/NavMenu.razor.rz.scp.css */
+/* General Navbar Styling */
+.bg-primary[b-kfv5ransuu] {
+    background-color: #001f40 !important; /* Deep blue */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar[b-kfv5ransuu] {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    height: 80px; /* Consistent height */
+    display: flex;
+    align-items: center;
+    position: relative; /* Ensure correct stacking context */
+}
+
+/* Brand Styling */
+.navbar-brand[b-kfv5ransuu] {
+    color: #cbf7ff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand:hover[b-kfv5ransuu] {
+    color: #f8d569 !important;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Navbar Links */
+.navbar-nav[b-kfv5ransuu] {
+    align-items: center;
+}
+
+[b-kfv5ransuu] .nav-link {
+    color: #c7c7c7 !important;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+[b-kfv5ransuu] .nav-link:hover {
+    color: #f8d569 !important;
+}
+
+[b-kfv5ransuu] .nav-link.active {
+    color: #f8d569 !important;
+    border-bottom: 2px solid #f8d569;
+}
+
+/* Navbar Toggler */
+.navbar-toggler[b-kfv5ransuu] {
+    border: none;
+    background-color: transparent;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.navbar-toggler-icon[b-kfv5ransuu] {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    display: block;
+    position: relative;
+}
+
+.navbar-toggler-icon[b-kfv5ransuu]::before,
+.navbar-toggler-icon[b-kfv5ransuu]::after {
+    content: "";
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon[b-kfv5ransuu]::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon[b-kfv5ransuu]::after {
+    top: 8px;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon[b-kfv5ransuu]::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon[b-kfv5ransuu]::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* Collapsible Navbar Styling */
+.collapse[b-kfv5ransuu] {
+    transition: height 0.3s ease-in-out;
+    background-color: #001f40;
+}
+
+/* Mobile-Specific Styling for screens up to 767px */
+@media (max-width: 767px) {
+    .navbar-nav[b-kfv5ransuu] {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .nav-item[b-kfv5ransuu] {
+        width: 100%;
+    }
+
+    .navbar-brand[b-kfv5ransuu] {
+        width: 70%; /* Adjust this value to leave space for the toggle button */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.2rem;
+    }
+
+    /* Dropdown Animations and Position */
+    .collapse[b-kfv5ransuu] {
+    position: absolute;
+    top: 80px; /* Dropdown opens just below the navbar */
+    left: 0;
+    width: 100%; /* Full-width dropdown */
+    background-color: #001f40; /* Same background as navbar */
+    transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
+    overflow: hidden;
+    max-height: 0; /* Initially collapsed */
+    z-index: 999;
+        }
+
+    .collapse.show[b-kfv5ransuu] {
+    max-height: 300px; /* Adjust based on the dropdown's content height */
+        }
+}
+
+/* Tablet-Specific Styling for screens between 768px and 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .navbar-nav[b-kfv5ransuu] {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .nav-item[b-kfv5ransuu] {
+        width: 100%;
+    }
+
+    .navbar-brand[b-kfv5ransuu] {
+        width: 70%; /* Adjust this value to leave space for the toggle button */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.2rem;
+    }
+
+    /* Dropdown Animations and Position */
+    .collapse[b-kfv5ransuu] {
+    position: absolute;
+    top: 80px; /* Dropdown opens just below the navbar */
+    left: 0;
+    width: 100%; /* Full-width dropdown */
+    background-color: #001f40; /* Same background as navbar */
+    transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
+    overflow: hidden;
+    max-height: 0; /* Initially collapsed */
+    z-index: 999;
+        }
+
+    .collapse.show[b-kfv5ransuu] {
+    max-height: 300px; /* Adjust based on the dropdown's content height */
+        }
+}
+
+/* _content/WebAppSEP7/Components/Pages/Index.razor.rz.scp.css */
+/* Hero Section */
+.hero-section[b-pbmgn2y5hl] {
+    background-color: #001f40;
+    color: #ffffff;
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero-content[b-pbmgn2y5hl] {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-button[b-pbmgn2y5hl] {
+    background-color: #f8d569;
+    border: none;
+    color: #001f40;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover[b-pbmgn2y5hl] {
+    background-color: #e6c05c;
+}
+
+/* Features Section */
+.features-section[b-pbmgn2y5hl] {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background-color: #f4f4f4;
+}
+
+.feature[b-pbmgn2y5hl] {
+    max-width: 300px;
+    text-align: center;
+}
+
+.feature h2[b-pbmgn2y5hl] {
+    color: #001f40;
+}
+
+/* Survey Section */
+.survey-section[b-pbmgn2y5hl] {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+}
+
+.survey-section h2[b-pbmgn2y5hl] {
+    color: #001f40;
+}
+
+/* Footer */
+.footer[b-pbmgn2y5hl] {
+    background-color: #001f40;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.footer ul[b-pbmgn2y5hl] {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.footer a[b-pbmgn2y5hl] {
+    color: #f8d569;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover[b-pbmgn2y5hl] {
+    color: #ffffff;
+}

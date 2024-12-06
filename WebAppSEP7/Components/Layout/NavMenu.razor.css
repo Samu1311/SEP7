@@ -1,0 +1,182 @@
+/* General Navbar Styling */
+.bg-primary {
+    background-color: #001f40 !important; /* Deep blue */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    height: 80px; /* Consistent height */
+    display: flex;
+    align-items: center;
+    position: relative; /* Ensure correct stacking context */
+}
+
+/* Brand Styling */
+.navbar-brand {
+    color: #cbf7ff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand:hover {
+    color: #f8d569 !important;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Navbar Links */
+.navbar-nav {
+    align-items: center;
+}
+
+::deep .nav-link {
+    color: #c7c7c7 !important;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+::deep .nav-link:hover {
+    color: #f8d569 !important;
+}
+
+::deep .nav-link.active {
+    color: #f8d569 !important;
+    border-bottom: 2px solid #f8d569;
+}
+
+/* Navbar Toggler */
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.navbar-toggler-icon {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    display: block;
+    position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: "";
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon::after {
+    top: 8px;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* Collapsible Navbar Styling */
+.collapse {
+    transition: height 0.3s ease-in-out;
+    background-color: #001f40;
+}
+
+/* Mobile-Specific Styling for screens up to 767px */
+@media (max-width: 767px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .navbar-brand {
+        width: 70%; /* Adjust this value to leave space for the toggle button */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.2rem;
+    }
+
+    /* Dropdown Animations and Position */
+    .collapse {
+    position: absolute;
+    top: 80px; /* Dropdown opens just below the navbar */
+    left: 0;
+    width: 100%; /* Full-width dropdown */
+    background-color: #001f40; /* Same background as navbar */
+    transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
+    overflow: hidden;
+    max-height: 0; /* Initially collapsed */
+    z-index: 999;
+        }
+
+    .collapse.show {
+    max-height: 300px; /* Adjust based on the dropdown's content height */
+        }
+}
+
+/* Tablet-Specific Styling for screens between 768px and 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .navbar-brand {
+        width: 70%; /* Adjust this value to leave space for the toggle button */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.2rem;
+    }
+
+    /* Dropdown Animations and Position */
+    .collapse {
+    position: absolute;
+    top: 80px; /* Dropdown opens just below the navbar */
+    left: 0;
+    width: 100%; /* Full-width dropdown */
+    background-color: #001f40; /* Same background as navbar */
+    transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
+    overflow: hidden;
+    max-height: 0; /* Initially collapsed */
+    z-index: 999;
+        }
+
+    .collapse.show {
+    max-height: 300px; /* Adjust based on the dropdown's content height */
+        }
+}
+

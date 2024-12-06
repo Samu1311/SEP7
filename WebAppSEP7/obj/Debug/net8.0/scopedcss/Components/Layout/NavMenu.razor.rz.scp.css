@@ -1,0 +1,182 @@
+/* General Navbar Styling */
+.bg-primary[b-kfv5ransuu] {
+    background-color: #001f40 !important; /* Deep blue */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar[b-kfv5ransuu] {
+    margin: 0;
+    padding: 0.5rem 1rem;
+    height: 80px; /* Consistent height */
+    display: flex;
+    align-items: center;
+    position: relative; /* Ensure correct stacking context */
+}
+
+/* Brand Styling */
+.navbar-brand[b-kfv5ransuu] {
+    color: #cbf7ff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand:hover[b-kfv5ransuu] {
+    color: #f8d569 !important;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Navbar Links */
+.navbar-nav[b-kfv5ransuu] {
+    align-items: center;
+}
+
+[b-kfv5ransuu] .nav-link {
+    color: #c7c7c7 !important;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+[b-kfv5ransuu] .nav-link:hover {
+    color: #f8d569 !important;
+}
+
+[b-kfv5ransuu] .nav-link.active {
+    color: #f8d569 !important;
+    border-bottom: 2px solid #f8d569;
+}
+
+/* Navbar Toggler */
+.navbar-toggler[b-kfv5ransuu] {
+    border: none;
+    background-color: transparent;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.navbar-toggler-icon[b-kfv5ransuu] {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    display: block;
+    position: relative;
+}
+
+.navbar-toggler-icon[b-kfv5ransuu]::before,
+.navbar-toggler-icon[b-kfv5ransuu]::after {
+    content: "";
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler-icon[b-kfv5ransuu]::before {
+    top: -8px;
+}
+
+.navbar-toggler-icon[b-kfv5ransuu]::after {
+    top: 8px;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon[b-kfv5ransuu]::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon[b-kfv5ransuu]::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* Collapsible Navbar Styling */
+.collapse[b-kfv5ransuu] {
+    transition: height 0.3s ease-in-out;
+    background-color: #001f40;
+}
+
+/* Mobile-Specific Styling for screens up to 767px */
+@media (max-width: 767px) {
+    .navbar-nav[b-kfv5ransuu] {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .nav-item[b-kfv5ransuu] {
+        width: 100%;
+    }
+
+    .navbar-brand[b-kfv5ransuu] {
+        width: 70%; /* Adjust this value to leave space for the toggle button */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.2rem;
+    }
+
+    /* Dropdown Animations and Position */
+    .collapse[b-kfv5ransuu] {
+    position: absolute;
+    top: 80px; /* Dropdown opens just below the navbar */
+    left: 0;
+    width: 100%; /* Full-width dropdown */
+    background-color: #001f40; /* Same background as navbar */
+    transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
+    overflow: hidden;
+    max-height: 0; /* Initially collapsed */
+    z-index: 999;
+        }
+
+    .collapse.show[b-kfv5ransuu] {
+    max-height: 300px; /* Adjust based on the dropdown's content height */
+        }
+}
+
+/* Tablet-Specific Styling for screens between 768px and 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .navbar-nav[b-kfv5ransuu] {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .nav-item[b-kfv5ransuu] {
+        width: 100%;
+    }
+
+    .navbar-brand[b-kfv5ransuu] {
+        width: 70%; /* Adjust this value to leave space for the toggle button */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 1.2rem;
+    }
+
+    /* Dropdown Animations and Position */
+    .collapse[b-kfv5ransuu] {
+    position: absolute;
+    top: 80px; /* Dropdown opens just below the navbar */
+    left: 0;
+    width: 100%; /* Full-width dropdown */
+    background-color: #001f40; /* Same background as navbar */
+    transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
+    overflow: hidden;
+    max-height: 0; /* Initially collapsed */
+    z-index: 999;
+        }
+
+    .collapse.show[b-kfv5ransuu] {
+    max-height: 300px; /* Adjust based on the dropdown's content height */
+        }
+}
+

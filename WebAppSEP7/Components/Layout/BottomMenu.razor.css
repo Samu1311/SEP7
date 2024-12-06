@@ -1,0 +1,49 @@
+/* Bottom Navigation Bar */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 50px; /* Reduced height */
+    background-color: #001f40; /* Dark Blue Background */
+    padding: 5px 0; /* Adjusted padding */
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Bottom Navigation Buttons */
+.bottom-nav .btn {
+    width: 180px; /* Wider buttons */
+    height: 35px; /* Reduced height for buttons */
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem; /* Adjusted font size */
+    font-weight: bold;
+    color: white;
+    background-color: #003063; /* Primary Blue */
+    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Remove underline for links */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin-top: 2px;
+}
+
+.bottom-nav .btn i {
+    font-size: 1.2rem;
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.bottom-nav .btn:hover {
+    background-color: #005a70; /* Darker Blue */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.bottom-nav .btn:active {
+    transform: translateY(0); /* Reset on click */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
