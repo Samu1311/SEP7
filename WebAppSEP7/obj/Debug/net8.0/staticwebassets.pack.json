@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\WebAppSEP7.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\gjensidige-logo.png",
+      "PackagePath": "staticwebassets\\Images\\gjensidige-logo.png"
+    },
+    {
       "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
