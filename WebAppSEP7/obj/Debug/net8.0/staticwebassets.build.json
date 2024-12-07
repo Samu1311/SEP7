@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "u2/sKAXemsNzGPu2yY8/hCiv9yuFaDdf6WGFvaUDJWo=",
+  "Hash": "wf0PiXjEBD1L1GLnW/D9lTIkwLeLLuDRTb5SpY5Yzvs=",
   "Source": "WebAppSEP7",
   "BasePath": "_content/WebAppSEP7",
   "Mode": "Default",
@@ -1516,6 +1516,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\gjensidige-logo.png",
+      "SourceId": "WebAppSEP7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\",
+      "BasePath": "_content/WebAppSEP7",
+      "RelativePath": "Images/gjensidige-logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\gjensidige-logo.png"
     }
   ]
 }
