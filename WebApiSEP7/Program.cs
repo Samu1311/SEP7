@@ -1,14 +1,16 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using WebApiSEP7; // Ensure this is the correct namespace for your DbContext
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
 
-/* // Configure JWT settings
+// Configure JWT settings
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
 
@@ -38,7 +40,8 @@ builder.Services.Configure<FormOptions>(options =>
 // Add database context
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
- */
+
+// Enable CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -48,31 +51,6 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod();
     });
 });
-
-builder.Services.Configure<FormOptions>(options =>
-{
-    options.MultipartBodyLengthLimit = 104857600; // 100 MB
-});
-
-
-/* // Register ImageProcessor as a singleton with the necessary parameters
-builder.Services.AddSingleton<ImageProcessor>(provider =>
-{
-    var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
-    var resultDirectory = Path.Combine(Directory.GetCurrentDirectory(), "MoleImageResults");
-
-    // Ensure directories exist
-    if (!Directory.Exists(uploadDirectory))
-    {
-        Directory.CreateDirectory(uploadDirectory);
-    }
-    if (!Directory.Exists(resultDirectory))
-    {
-        Directory.CreateDirectory(resultDirectory);
-    }
-
-    return new ImageProcessor(uploadDirectory, resultDirectory);
-}); */
 
 // Enable Swagger for API documentation
 builder.Services.AddEndpointsApiExplorer();

@@ -8,10 +8,8 @@
 /* Main Content Area */
 .main-content[b-f28uy6oihf] {
     flex: 1; /* Expands to fill available space */
-    padding: 1rem;
     overflow-y: auto; /* Scrollable if content exceeds height */
     background-color: #f9f9f9; /* Light background for better readability */
-        padding-bottom: 70px; /* Space for the bottom navigation bar */
 }
 
 /* Footer Styling */
@@ -19,7 +17,6 @@
     background-color: #f8f9fa; /* Light background */
     color: #6c757d; /* Muted text color */
     text-align: center;
-    padding: 1rem;
     font-size: 0.9rem;
     border-top: 1px solid #e9ecef; /* Subtle border for separation */
 }

@@ -1,0 +1,281 @@
+/* General Styles */
+body[b-smkr10ug2j] {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Health Overview Section */
+.health-overview[b-smkr10ug2j] {
+    background-color: #ffffff; /* Clean white background */
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.titleNice[b-smkr10ug2j] {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #090c33;
+    margin-bottom: 1rem;
+    text-align: left;
+    position: relative;
+    border-bottom: none;
+}
+
+.health-overview h1[b-smkr10ug2j]::after {
+    content: "";
+    display: block;
+    width: 100px; /* Short underline */
+    height: 4px;
+    background-color: #090c33; /* Same dark blue for underline */
+    margin: 0.5rem auto 0 auto;
+}
+
+/* Container1: Text and Image */
+.container1[b-smkr10ug2j] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.container1 .text-content[b-smkr10ug2j] {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.container1 .image-content[b-smkr10ug2j] {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container1 .image-content img[b-smkr10ug2j] {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Container2: Additional Text */
+.container2[b-smkr10ug2j] {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #333;
+    padding: 1.5rem;
+    background-color: #eef6ff; /* Soft blue background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container1[b-smkr10ug2j] {
+        flex-direction: column; /* Stack text and image vertically */
+        padding: 1rem;
+    }
+
+    .container1 .image-content[b-smkr10ug2j] {
+        margin-top: 1rem;
+    }
+
+    .container1 .text-content[b-smkr10ug2j] {
+        font-size: 1.1rem; /* Slightly smaller text for mobile */
+    }
+
+    .container2[b-smkr10ug2j] {
+        font-size: 1.1rem; /* Slightly smaller text for mobile */
+        padding: 1rem;
+    }
+}
+
+
+/* Form Section */
+#health-form[b-smkr10ug2j] {
+    background-color: #ffffff;
+    padding: 60px;
+    margin: 0 auto; /* Center the form section */
+    font-family: 'Arial', sans-serif; /* Updated font */
+    font-size: 1.2rem; /* Increase form text size */
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+    .container1[b-smkr10ug2j] {
+        flex-direction: column; /* Stack text and image vertically */
+        align-items: center; /* Center content */
+    }
+
+    .container1 .image-content[b-smkr10ug2j] {
+        max-width: 100%; /* Maintain responsiveness */
+        margin-top: 20px;
+        text-align: center; /* Center the image */
+    }
+
+    .container1 .text-content[b-smkr10ug2j] {
+        max-width: 100%; /* Full width for text */
+    }
+
+    .overview-image[b-smkr10ug2j] {
+        width: 100%; /* Responsive image scaling */
+    }
+
+    .container2[b-smkr10ug2j] {
+        align-items: center; /* Center text */
+        text-align: justify; /* Maintain justified text */
+    }
+
+    #health-form[b-smkr10ug2j] {
+        padding: 30px; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Adjust font size */
+    }
+}
+
+
+
+/* Container Styles */
+.edit-medical-data-container[b-smkr10ug2j] {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f9fc;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.page-title[b-smkr10ug2j] {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #004085;
+}
+
+.info-box-medical-box[b-smkr10ug2j] {
+    padding: 20px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    border: 1px solid #219ebc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.profile-card[b-smkr10ug2j] {
+    padding: 20px;
+}
+
+.section-title[b-smkr10ug2j] {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #219ebc;
+    color: #004085;
+}
+
+.form-group[b-smkr10ug2j] {
+    margin-bottom: 20px;
+}
+
+label[b-smkr10ug2j] {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: block;
+    color: #004085;
+}
+
+.form-control[b-smkr10ug2j] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus[b-smkr10ug2j] {
+    border-color: #219ebc;
+    outline: none;
+    box-shadow: 0 0 5px rgba(33, 158, 188, 0.25);
+}
+
+.form-control:hover[b-smkr10ug2j] {
+    border-color: #0056b3;
+}
+
+select.form-control[b-smkr10ug2j] {
+    height: 45px;
+}
+
+.save-btn[b-smkr10ug2j] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #219ebc;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.save-btn:hover[b-smkr10ug2j] {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.save-btn:active[b-smkr10ug2j] {
+    background-color: #003366;
+    transform: translateY(0);
+}
+
+hr[b-smkr10ug2j] {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 30px 0;
+}
+
+@media (max-width: 768px) {
+    .edit-medical-data-container[b-smkr10ug2j] {
+        padding: 15px;
+    }
+
+    .page-title[b-smkr10ug2j] {
+        font-size: 2rem;
+    }
+
+    .section-title[b-smkr10ug2j] {
+        font-size: 1.5rem;
+    }
+
+    .form-control[b-smkr10ug2j] {
+        font-size: 0.9rem;
+    }
+
+    .save-btn[b-smkr10ug2j] {
+        font-size: 1rem;
+    }
+}

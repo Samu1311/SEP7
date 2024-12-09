@@ -11,15 +11,22 @@
     display: flex;
     align-items: center;
     position: relative; /* Ensure correct stacking context */
+    width: 100%; /* Ensure full width */
+}
+
+/* Remove white space between navbar and top of the page */
+body[b-kfv5ransuu] {
+    margin: 0;
+    padding: 0;
 }
 
 /* Brand Styling */
 .navbar-brand[b-kfv5ransuu] {
-    color: #cbf7ff;
+    color: #ffffff;
     font-size: 1.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
     margin-left: 1rem;
+    display: flex;
+    align-items: center;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -28,7 +35,12 @@
     transition: color 0.3s ease-in-out;
 }
 
-/* Navbar Links */
+.brand-logo[b-kfv5ransuu] {
+    margin-left: 0.5rem;
+    height: 40px; /* Adjust as needed */
+}
+
+/* Navbar Links Styling */
 .navbar-nav[b-kfv5ransuu] {
     align-items: center;
 }
@@ -124,25 +136,24 @@
 
     /* Dropdown Animations and Position */
     .collapse[b-kfv5ransuu] {
-    position: absolute;
-    top: 80px; /* Dropdown opens just below the navbar */
-    left: 0;
-    width: 100%; /* Full-width dropdown */
-    background-color: #001f40; /* Same background as navbar */
-    transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
-    overflow: hidden;
-    max-height: 0; /* Initially collapsed */
-    z-index: 999;
-        }
+        position: absolute;
+        top: 80px; /* Dropdown opens just below the navbar */
+        left: 0;
+        width: 100%; /* Full-width dropdown */
+        background-color: #001f40; /* Same background as navbar */
+        transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
+        overflow: hidden;
+        max-height: 0; /* Initially collapsed */
+        z-index: 999;
+    }
 
     .collapse.show[b-kfv5ransuu] {
-    max-height: 300px; /* Adjust based on the dropdown's content height */
-        }
+        max-height: 300px; /* Adjust based on the dropdown's content height */
+    }
 }
 
 /* Tablet-Specific Styling for screens between 768px and 1024px */
 @media (min-width: 768px) and (max-width: 1024px) {
-
     .navbar-nav[b-kfv5ransuu] {
         flex-direction: column;
         align-items: flex-start;
@@ -164,19 +175,18 @@
 
     /* Dropdown Animations and Position */
     .collapse[b-kfv5ransuu] {
-    position: absolute;
-    top: 80px; /* Dropdown opens just below the navbar */
-    left: 0;
-    width: 100%; /* Full-width dropdown */
-    background-color: #001f40; /* Same background as navbar */
-    transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
-    overflow: hidden;
-    max-height: 0; /* Initially collapsed */
-    z-index: 999;
-        }
+        position: absolute;
+        top: 80px; /* Dropdown opens just below the navbar */
+        left: 0;
+        width: 100%; /* Full-width dropdown */
+        background-color: #001f40; /* Same background as navbar */
+        transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
+        overflow: hidden;
+        max-height: 0; /* Initially collapsed */
+        z-index: 999;
+    }
 
     .collapse.show[b-kfv5ransuu] {
-    max-height: 300px; /* Adjust based on the dropdown's content height */
-        }
+        max-height: 300px; /* Adjust based on the dropdown's content height */
+    }
 }
-
