@@ -17,63 +17,63 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebAppSEP7
 build_property.RootNamespace = WebAppSEP7
-build_property.ProjectDir = C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\
+build_property.ProjectDir = C:\Users\eliza\OneDrive\Pulpit\Uni\7st semester\SEP7\SEP7 Code\SEP7\WebAppSEP7\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7
+build_property.MSBuildProjectDirectory = C:\Users\eliza\OneDrive\Pulpit\Uni\7st semester\SEP7\SEP7 Code\SEP7\WebAppSEP7
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/App.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/Counter.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/Error.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/Weather.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Routes.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/_Imports.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Layout/BottomMenu.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Layout/BottomMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQm90dG9tTWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-dz010fr5e9
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Layout/MainLayout.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-f28uy6oihf
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Layout/NavMenu.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-kfv5ransuu
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/AIdescription.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Pages/AIdescription.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBSWRlc2NyaXB0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-n16r71v211
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/AIform.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Pages/AIform.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBSWZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-n347jip5c6
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/HomePage.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Pages/HomePage.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-s7855b0t44
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/MedicalQuestions.razor]
+[C:/Users/eliza/OneDrive/Pulpit/Uni/7st semester/SEP7/SEP7 Code/SEP7/WebAppSEP7/Components/Pages/MedicalQuestions.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNZWRpY2FsUXVlc3Rpb25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-smkr10ug2j
