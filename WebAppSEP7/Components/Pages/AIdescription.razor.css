@@ -1,0 +1,162 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #090c33; /* Dark background for contrast */
+    color: #ffffff;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    gap: 2rem;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-text h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+button {
+    width: 300px;
+    height: 100px;
+    border: 3px solid #090c33;
+    border-radius: 45px;
+    transition: all 0.3s;
+    cursor: pointer;
+    background: white;
+    font-size: 1.3em;
+    font-weight: 550;
+  }
+  
+  button:hover {
+    background: #090c33;
+    color: white;
+    font-size: 1.5em;
+  }
+  
+
+/* Features Section */
+.features-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #ffffff;
+}
+
+.features-section h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #090c33;
+    margin-bottom: 2rem;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.feature-card h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #090c33;
+    margin-bottom: 1rem;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Survey Section */
+.survey-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background-color: #eef6ff; /* A soft blue for a calm, reassuring vibe */
+}
+
+.survey-section h2 {
+    font-size: 2rem;
+    color: #002855;
+    margin-bottom: 1rem;
+}
+
+.survey-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+    color: #333;
+}
+
+

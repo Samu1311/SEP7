@@ -5,8 +5,36 @@
       "PackagePath": "staticwebassets\\WebAppSEP7.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\AIdescription_photo.jpg",
+      "PackagePath": "staticwebassets\\Images\\AIdescription_photo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\AIform_photo.jpg",
+      "PackagePath": "staticwebassets\\Images\\AIform_photo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\data_picture.jpg",
+      "PackagePath": "staticwebassets\\Images\\data_picture.jpg"
+    },
+    {
       "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\gjensidige-logo.png",
       "PackagePath": "staticwebassets\\Images\\gjensidige-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\how_picture.jpg",
+      "PackagePath": "staticwebassets\\Images\\how_picture.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\icons\\step_one.png",
+      "PackagePath": "staticwebassets\\Images\\icons\\step_one.png"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\icons\\step_three.png",
+      "PackagePath": "staticwebassets\\Images\\icons\\step_three.png"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\icons\\step_two.png",
+      "PackagePath": "staticwebassets\\Images\\icons\\step_two.png"
     },
     {
       "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\app.css",

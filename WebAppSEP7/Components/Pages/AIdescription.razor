@@ -1,0 +1,52 @@
+@page "/AIdescription"
+@inject NavigationManager NavigationManager
+
+<div class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>AI-Powered Health Insurance Package</h1>
+            <h2>Discover Your Tailored Solution Today!</h2>
+            <p>
+                We are excited to introduce a groundbreaking solution to redefine how you choose your health insurance package. Our innovative approach leverages the power of machine learning to analyze your personalized health risk factors and ensure that your insurance plan focuses on your unique needs.
+            </p>
+        </div>
+        <div class="hero-image">
+            <img src="Images/AIdescription_photo.jpg" alt="AIdescription Image">
+        </div>
+    </div>
+</div>
+
+
+<div class="features-section">
+    <h3>Why Choose Our Solution?</h3>
+    <div class="features">
+        <div class="feature-card">
+            <h4>Handpick the Coverage You Need</h4>
+            <p>Choose tailored insurance coverage that prioritizes your specific health concerns.</p>
+        </div>
+        <div class="feature-card">
+            <h4>Benefits That Add Value</h4>
+            <p>Get recommendations that ensure your plan fits your lifestyle and budget.</p>
+        </div>
+        <div class="feature-card">
+            <h4>Save Time with Automation</h4>
+            <p>Let AI simplify the process of choosing the right insurance for you.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="survey-section">
+    <p>
+        Take control of your health and insurance today with our AI-powered solution. Protect what matters most with a plan tailored just for you.
+    </p>
+    <button class="button" @onclick="NavigateToForm">Get Started Now!</button>
+</div>
+
+@code {
+    private void NavigateToForm()
+    {
+        NavigationManager.NavigateTo("/AIform");
+    }
+
+}

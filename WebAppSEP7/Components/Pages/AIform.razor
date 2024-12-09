@@ -1,0 +1,155 @@
+@page "/AIform"
+@inject NavigationManager NavigationManager
+
+<div class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Health Assessment Overview</h1>
+            <h2>A Step Towards Tailored Insurance Solutions</h2>
+            <p>
+                Welcome to our Health Assessment Form, an integral part of ensuring you receive the best insurance coverage tailored specifically to your needs. This form has been designed to collect important health-related information that will allow us to offer you a customized insurance package that aligns with your lifestyle and personal health profile.
+            </p>
+        </div>
+        <div class="hero-image">
+            <img src="Images/AIform_photo.jpg" alt="Health Assessment Overview">
+        </div>
+    </div>
+</div>
+
+<div class="features-section">
+    <h3>Why Your Health Assessment Matters</h3>
+    <div class="features-paragraphs">
+        <p>
+            Our innovative approach to insurance relies on the power of artificial intelligence. By using your answers to the health assessment, our AI model analyzes your health data to predict which insurance package will provide the most value to you. This isn't a one-size-fits-all approach—it's personalized to offer you the right coverage for your unique circumstances.
+        </p>
+        <p>
+            The questions in this form will touch on various aspects of your health and lifestyle. While some questions may seem sensitive, such as those related to pregnancy, weight, height, smoking, or alcohol consumption, they are critical for building a complete picture of your overall health. By understanding these key factors, the model can better evaluate potential risks and recommend a package that ensures your well-being and financial security.
+        </p>
+    </div>
+</div>
+
+
+<div class="process-section">
+    <h3>How the Process Works</h3>
+    <div class="process-steps">
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h4>Personal Details</h4>
+                    <p>We begin by asking for basic personal questions, including your weight, height, or whether you're currently pregnant.</p>
+                </div>
+                <div class="card-back">
+                    <p>These details are foundational for evaluating your overall health status.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h4>Lifestyle Insights</h4>
+                    <p>Next, we explore medical factors such as your smoking habits, resting blood pressure or your family's health history.</p>
+                </div>
+                <div class="card-back">
+                    <p>These questions are crucial as they play a significant role in determining your long-term health risks and needs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h4>Data Analysis</h4>
+                    <p>Once you submit your responses, our AI-powered system securely processes the data.</p>
+                </div>
+                <div class="card-back">
+                    <p>It uses advanced algorithms to compare your health profile against thousands of similar cases.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h4>Tailored Recommendations</h4>
+                    <p>Based on the analysis, you’ll receive a personalized recommendation for an insurance package.</p>
+                </div>
+                <div class="card-back">
+                    <p>The goal is to provide coverage that meets your specific needs, protects against foreseeable risks, and ensures peace of mind.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="info-boxes">
+    <div class="info-box">
+        <img src="Images/data_picture.jpg" alt="Data Picture" class="info-img">
+        <h3>Your Data, Your Privacy</h3>
+        <p>
+            We understand that the information you provide is highly sensitive. Rest assured, your data is handled with the utmost care and confidentiality. All details are stored securely and used solely for the purpose of tailoring your insurance package. Transparency and trust are the cornerstones of our relationship with our customers.
+        </p>
+    </div>
+    <div class="info-box">
+        <img src="Images/how_picture.jpg" alt="Help Picture" class="info-img">
+        <h3>How This Helps You</h3>
+        <ul>
+            <li>A personalized insurance plan that fits your current and future needs.</li>
+            <li>Clear, data-driven recommendations that simplify the decision-making process.</li>
+            <li>Financial security that aligns with your health profile, giving you confidence in your coverage.</li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="features-section">
+    <h3>Final Thoughts</h3>
+    <div class="features-paragraphs">
+    <p>
+        Completing the Health Assessment is a critical step in ensuring that your insurance coverage is as unique as you are. By sharing a little bit about your health and lifestyle, you empower us to provide you with the best possible options, ensuring your protection and well-being for years to come.
+    </p>
+    <p>
+        Remember, this isn’t just about getting insurance—it’s about building a safety net tailored specifically for you, backed by the latest in AI-driven insights and a commitment to your privacy and trust. We’re here to support you every step of the way, ensuring you feel confident and secure in your decision to protect what matters most.
+    </p>
+</div>
+</diV>
+
+<div class="survey-section">
+    <p>
+        Ready to begin your journey towards tailored insurance coverage? Answer the questions below to get started.
+    </p>
+    <div class="selection">
+        <div class="button-card">
+            <button class="button" @onclick="NavigateToPersonal">
+                <img src="Images/icons/step_one.png" alt="Personal Icon" class="button-icon">
+                Personal Questions
+            </button>
+        </div>
+        <div class="button-card">
+            <button class="button" @onclick="NavigateToMedical">
+                <img src="Images/icons/step_two.png" alt="Medical Icon" class="button-icon">
+                Medical Questions
+            </button>
+        </div>
+        <div class="button-card">
+            <button class="button" @onclick="NavigateToResults">
+                <img src="Images/icons/step_three.png" alt="Results Icon" class="button-icon">
+                Results
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    private void NavigateToPersonal()
+    {
+        NavigationManager.NavigateTo("/PersonalQuestions");
+    }
+
+    private void NavigateToMedical()
+    {
+        NavigationManager.NavigateTo("/MedicalQuestions");
+    }
+
+    private void NavigateToResults()
+    {
+        NavigationManager.NavigateTo("/Results");
+    }
+}
