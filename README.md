@@ -32,4 +32,4 @@ The WebApp allows users to:
 ## 💻 How to Run the Project
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-repo-name.git
+   git clone https://github.com/Samu1311/SEP7.git
