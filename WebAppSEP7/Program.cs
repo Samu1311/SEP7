@@ -1,5 +1,6 @@
 using WebAppSEP7.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Blazored.LocalStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,16 +9,16 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 // Add HttpClient for API calls
-builder.Services.AddHttpClient("HealthAppAPI", client =>
+builder.Services.AddHttpClient("SEP7API", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5146/api/"); // Ensure API Base Address is correct
+    client.BaseAddress = new Uri("http://localhost:5148/api/"); // Ensure API Base Address is correct
 });
 
-/* // Add Authentication and Authorization
+// Add Authentication and Authorization
 builder.Services.AddAuthorizationCore(); // Required for Blazor
 builder.Services.AddScoped<CustomAuthenticationStateProvider>();
 builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<CustomAuthenticationStateProvider>());
-builder.Services.AddBlazoredLocalStorage(); */
+builder.Services.AddBlazoredLocalStorage();
 
 var app = builder.Build();
 

@@ -1,0 +1,132 @@
+/* General Layout */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure container covers the entire viewport */
+    background-color: #f9ffd7; /* Hampton */
+    padding: 20px;
+    margin: 0;
+}
+
+/* Ensure the background color covers the full height, even with scrolling */
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #f9ffd7; /* Hampton */
+    overflow-x: hidden;
+}
+
+.signup-card {
+    background-color: #0f1235; /* Haiti */
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Titles and Subtitles */
+.signup-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #7554f6; /* Cornflower Blue */
+    margin-bottom: 10px;
+}
+
+.signup-subtitle {
+    font-size: 1rem;
+    color: #f4f4f4;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.modern-input {
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.modern-input:focus {
+    border: 2px solid #7554f6; /* Cornflower Blue */
+    outline: none;
+    box-shadow: 0 0 5px rgba(117, 84, 246, 0.5);
+}
+
+/* Dropdown Styling */
+.modern-dropdown {
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    color: #0f1235; /* Haiti */
+    transition: all 0.3s ease-in-out;
+    appearance: none; /* Remove default arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+.modern-dropdown:focus {
+    border: 2px solid #7554f6; /* Cornflower Blue */
+    outline: none;
+    box-shadow: 0 0 5px rgba(117, 84, 246, 0.5);
+}
+
+/* Password Toggle */
+.password-container {
+    position: relative;
+}
+
+.password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #7554f6; /* Cornflower Blue */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.password-toggle-btn:hover {
+    color: #5c3edf;
+}
+
+/* Buttons */
+.modern-btn {
+    background-color: #7554f6; /* Cornflower Blue */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(117, 84, 246, 0.4);
+}
+
+.modern-btn:hover {
+    background-color: #5c3edf;
+    box-shadow: 0px 6px 12px rgba(117, 84, 246, 0.6);
+}
+
+/* Links */
+.modern-link {
+    color: #7554f6; /* Cornflower Blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.modern-link:hover {
+    color: #5c3edf;
+    text-decoration: underline;
+}

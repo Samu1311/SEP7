@@ -1,0 +1,96 @@
+/* General Layout */
+.login-container[b-2gxmc4x5oe] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f9ffd7; /* Hampton */
+    padding: 20px;
+}
+
+.login-card[b-2gxmc4x5oe] {
+    background-color: #0f1235; /* Haiti */
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Titles and Subtitles */
+.login-title[b-2gxmc4x5oe] {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #7554f6; /* Cornflower Blue */
+    margin-bottom: 10px;
+}
+
+.login-subtitle[b-2gxmc4x5oe] {
+    font-size: 1rem;
+    color: #f4f4f4;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.modern-input[b-2gxmc4x5oe] {
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.modern-input:focus[b-2gxmc4x5oe] {
+    border: 2px solid #7554f6; /* Cornflower Blue */
+    outline: none;
+    box-shadow: 0 0 5px rgba(117, 84, 246, 0.5);
+}
+
+/* Buttons */
+.modern-btn[b-2gxmc4x5oe] {
+    background-color: #7554f6; /* Cornflower Blue */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(117, 84, 246, 0.4);
+}
+
+.modern-btn:hover[b-2gxmc4x5oe] {
+    background-color: #5c3edf;
+    box-shadow: 0px 6px 12px rgba(117, 84, 246, 0.6);
+}
+
+/* Links */
+.modern-link[b-2gxmc4x5oe] {
+    color: #7554f6; /* Cornflower Blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.modern-link:hover[b-2gxmc4x5oe] {
+    color: #5c3edf;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-card[b-2gxmc4x5oe] {
+        padding: 20px;
+    }
+
+    .login-title[b-2gxmc4x5oe] {
+        font-size: 1.5rem;
+    }
+
+    .modern-btn[b-2gxmc4x5oe] {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}

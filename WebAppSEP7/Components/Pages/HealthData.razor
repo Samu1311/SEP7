@@ -1,0 +1,85 @@
+@page "/HealthData"
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+
+<section class="health-overview">
+    <div class="titleNice">Health Overview Assessment</div>
+    <div class="container1">
+        <div class="text-content">
+                <p class="description">
+                    The first part of the Health Assessment focuses on your lifestyle and overall health, laying the groundwork for 
+                    understanding how your day-to-day habits and personal health profile influence your well-being. This section plays
+                     a pivotal role in creating a comprehensive picture of your current health and helps our system tailor an insurance 
+                     package that truly reflects your individual needs.
+                </p>
+        </div>
+        <div class="image-content">
+                <img src="/Images/FamilyImage.png" alt="Health Assessment" class="overview-image" />   
+        </div>       
+    </div>
+    <div class="container2">
+        <div class="text-content">
+                <p class="description">
+                    This phase of the assessment includes a series of questions designed to evaluate key factors such as your weight, height, 
+                    pregnancy status, smoking habits, and alcohol consumption. Each of these aspects contributes valuable insights into your health profile 
+                    and provides the context needed to ensure that the insurance coverage you receive is aligned with your specific lifestyle. 
+                    Let’s delve deeper into why each element is important:
+                </p>
+        </div>    
+    </div>
+</section>
+
+<section id="health-form" class="health-form">
+    <div class="edit-medical-data-container">
+    <h1 class="page-title">Health Overview</h1>
+    
+    <div class="info-box-medical-box">
+        <div class="profile-card">
+            <h2 class="section-title">Personal Information</h2>
+            
+            <div class="form-group">
+                <label for="Pregnancy">Are you currently pregnant?</label>
+                <select id="pregnancy" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Weight">Weight (kg)</label>
+                <input type="number" id="weight" class="form-control" placeholder="Enter your weight" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="Height">Height (cm)</label>
+                <input type="number" id="height" class="form-control" placeholder="Enter your height" min="0">
+            </div>
+
+            <hr />
+
+            <h2 class="section-title">Lifestyle Habits</h2>
+
+            <div class="form-group">
+                <label for="Smoking">Do you smoke?</label>
+                <select id="smoking" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Alcohol">Do you consume alcohol?</label>
+                <select id="alcohol" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary save-btn">Save Changes</button>
+        </div>
+    </div>
+</div>
+</section>

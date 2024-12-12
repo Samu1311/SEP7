@@ -1,82 +1,149 @@
+/* Yellow Ribbon */
+.yellow-ribbon {
+    background-color: #f9ffd7; /* Hampton */
+    color: #0f1235; /* Haiti */
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.yellow-ribbon p {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Matches the overall font aesthetic */
+    letter-spacing: 0.5px; /* Slight spacing for readability */
+}
+
+.yellow-ribbon:hover {
+    background-color: #f0fda7; /* Slightly brighter yellow on hover */
+    color: #0f1235; /* Keep text color consistent */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
 /* Hero Section */
 .hero-section {
-    background-color: #001f40;
-    color: #ffffff;
-    padding: 2rem;
+    background-color: #0f1235; /* Haiti */
+    color: white;
+    padding: 4rem 2rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .hero-content {
     max-width: 800px;
-    margin: 0 auto;
+    text-align: center;
 }
 
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #f9ffd7; /* Hampton */
+}
+
+/* Call-to-Action Button */
 .cta-button {
-    background-color: #f8d569;
+    background-color: #7554f6; /* Cornflower Blue */
     border: none;
-    color: #001f40;
-    padding: 0.75rem 1.5rem;
+    color: white;
+    padding: 1rem 2rem;
     font-size: 1.2rem;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease-in-out;
 }
 
 .cta-button:hover {
-    background-color: #e6c05c;
+    background-color: #5c3edf;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(92, 62, 223, 0.4);
 }
 
 /* Features Section */
 .features-section {
     display: flex;
     justify-content: space-around;
-    padding: 2rem;
+    padding: 4rem 2rem;
     background-color: #f4f4f4;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .feature {
     max-width: 300px;
     text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .feature h2 {
-    color: #001f40;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #0f1235; /* Haiti */
 }
 
 /* Survey Section */
 .survey-section {
     text-align: center;
-    padding: 2rem;
-    background-color: #ffffff;
+    padding: 4rem 2rem;
+    background-color: white;
 }
 
 .survey-section h2 {
-    color: #001f40;
+    font-size: 2rem;
+    color: #0f1235; /* Haiti */
+    margin-bottom: 1rem;
+}
+
+.survey-section p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #333333;
 }
 
 /* Footer */
 .footer {
-    background-color: #001f40;
-    color: #ffffff;
+    background-color: #0f1235; /* Haiti */
+    color: white;
     text-align: center;
     padding: 1rem 0;
+    border-top: 5px solid #7554f6; /* Cornflower Blue */
 }
 
 .footer ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    padding: 0;
+    gap: 2rem;
+    margin: 1rem 0 0;
 }
 
-.footer a {
-    color: #f8d569;
+.footer ul li a {
+    color: #f9ffd7; /* Hampton */
     text-decoration: none;
-    transition: color 0.3s;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-.footer a:hover {
-    color: #ffffff;
+.footer ul li a:hover {
+    color: #7554f6; /* Cornflower Blue */
 }

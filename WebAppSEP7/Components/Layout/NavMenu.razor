@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Authorization
 @inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <nav class="navbar navbar-expand-lg bg-primary">
     <a class="navbar-brand" href="/">
@@ -28,6 +31,18 @@
             <li class="nav-item">
                 <NavLink class="nav-link" href="/services">Services</NavLink>
             </li>
+            <AuthorizeView>
+                <Authorized>
+                    <li class="nav-item">
+                        <button class="nav-link btn btn-link" @onclick="LogOut">Log Out</button>
+                    </li>
+                </Authorized>
+                <NotAuthorized>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="/login">Log In</NavLink>
+                    </li>
+                </NotAuthorized>
+            </AuthorizeView>
         </ul>
     </div>
 </nav>
@@ -38,5 +53,13 @@
     private void ToggleNavbar()
     {
         isNavbarExpanded = !isNavbarExpanded;
+    }
+
+    private async Task LogOut()
+    {
+        await LocalStorage.RemoveItemAsync("authToken");
+        var authStateProvider = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
+        authStateProvider.NotifyUserLogout();
+        NavigationManager.NavigateTo("/");
     }
 }

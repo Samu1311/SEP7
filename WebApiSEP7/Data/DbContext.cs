@@ -1,46 +1,50 @@
 using Microsoft.EntityFrameworkCore;
+using WebApiSEP7.Models; // Ensure this is the correct namespace for your models
 
-public class AppDbContext : DbContext
+namespace WebApiSEP7.Data // Ensure this is the correct namespace for your DbContext
 {
-    public DbSet<Category> Categories { get; set; }
-    public DbSet<Service> Services { get; set; }
-    public DbSet<SubscriptionCategory> SubscriptionCategories { get; set; }
-    public DbSet<Subscription> Subscriptions { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<HealthcareInformation> HealthcareInformations { get; set; }
-
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public class AppDbContext : DbContext
     {
-        base.OnModelCreating(modelBuilder);
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<SubscriptionCategory> SubscriptionCategories { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<HealthcareInformation> HealthcareInformations { get; set; }
 
-        // Configure relationships
-        modelBuilder.Entity<SubscriptionCategory>()
-            .HasOne(sc => sc.Category)
-            .WithMany(c => c.SubscriptionCategories)
-            .HasForeignKey(sc => sc.CategoryId);
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        modelBuilder.Entity<SubscriptionCategory>()
-            .HasOne(sc => sc.Subscription)
-            .WithMany(s => s.SubscriptionCategories)
-            .HasForeignKey(sc => sc.SubscriptionId);
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-        modelBuilder.Entity<Service>()
-            .HasOne(s => s.Category)
-            .WithMany(c => c.Services)
-            .HasForeignKey(s => s.CategoryId);
+            // Configure relationships
+            modelBuilder.Entity<SubscriptionCategory>()
+                .HasOne(sc => sc.Category)
+                .WithMany(c => c.SubscriptionCategories)
+                .HasForeignKey(sc => sc.CategoryId);
 
-        modelBuilder.Entity<User>()
-            .HasOne(u => u.Subscription)
-            .WithMany(s => s.Users)
-            .HasForeignKey(u => u.SubscriptionId)
-            .OnDelete(DeleteBehavior.SetNull); // Handle nullable foreign key
+            modelBuilder.Entity<SubscriptionCategory>()
+                .HasOne(sc => sc.Subscription)
+                .WithMany(s => s.SubscriptionCategories)
+                .HasForeignKey(sc => sc.SubscriptionId);
 
-        modelBuilder.Entity<User>()
-            .HasOne(u => u.HealthcareInformation)
-            .WithOne(hi => hi.User)
-            .HasForeignKey<HealthcareInformation>(hi => hi.UserId)
-            .OnDelete(DeleteBehavior.Cascade); // Ensure cascading delete
+            modelBuilder.Entity<Service>()
+                .HasOne(s => s.Category)
+                .WithMany(c => c.Services)
+                .HasForeignKey(s => s.CategoryId);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Subscription)
+                .WithMany(s => s.Users)
+                .HasForeignKey(u => u.SubscriptionId)
+                .OnDelete(DeleteBehavior.SetNull); // Handle nullable foreign key
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.HealthcareInformation)
+                .WithOne(hi => hi.User)
+                .HasForeignKey<HealthcareInformation>(hi => hi.UserId)
+                .OnDelete(DeleteBehavior.Cascade); // Ensure cascading delete
+        }
     }
 }

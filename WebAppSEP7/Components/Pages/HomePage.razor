@@ -1,6 +1,19 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Authorization
 @inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject CustomAuthenticationStateProvider AuthProvider
+@inject IHttpClientFactory HttpClientFactory
+@using System.Security.Claims
+
+<AuthorizeView>
+    <Authorized>
+        <div class="yellow-ribbon">
+            <p>Welcome, @userName!</p>
+        </div>
+    </Authorized>
+</AuthorizeView>
 
 <div class="hero-section">
     <div class="hero-content">
@@ -35,12 +48,42 @@
     <p>© 2024 Gjensidige. All rights reserved.</p>
     <ul>
         <li><a href="/AIdescription">Terms of Service</a></li>
-        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/HealthData">Privacy Policy</a></li>
         <li><a href="/contact-us">Contact Us</a></li>
     </ul>
 </footer>
 
 @code {
+    private string userName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationStateProvider.AuthenticationStateChanged += OnAuthenticationStateChanged;
+        await UpdateUserName();
+    }
+
+    private async Task UpdateUserName()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            userName = user.FindFirst(c => c.Type == ClaimTypes.GivenName)?.Value;
+        }
+        else
+        {
+            userName = null;
+        }
+
+        StateHasChanged();
+    }
+
+    private async void OnAuthenticationStateChanged(Task<AuthenticationState> task)
+    {
+            await UpdateUserName();
+    }
+
     private void NavigateToLogin()
     {
         NavigationManager.NavigateTo("/login");
@@ -48,6 +91,11 @@
 
     private void NavigateToSurvey()
     {
-        NavigationManager.NavigateTo("/survey");
+        NavigationManager.NavigateTo("/recommendation");
+    }
+
+    public void Dispose()
+    {
+        AuthenticationStateProvider.AuthenticationStateChanged -= OnAuthenticationStateChanged;
     }
 }

@@ -1,0 +1,107 @@
+/* Page Layout */
+.recommendation-container[b-mezd0hw7jf] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f9ffd7; /* Hampton */
+    color: #0f1235; /* Haiti */
+    text-align: center;
+}
+
+.page-title[b-mezd0hw7jf] {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #7554f6; /* Cornflower Blue */
+    margin-bottom: 10px;
+}
+
+.page-subtitle[b-mezd0hw7jf] {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #0f1235;
+}
+
+/* Buttons */
+.btn[b-mezd0hw7jf] {
+    background-color: #7554f6; /* Cornflower Blue */
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:disabled[b-mezd0hw7jf] {
+    background-color: #c4c4c4;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled)[b-mezd0hw7jf] {
+    background-color: #5c3edf;
+    box-shadow: 0 4px 10px rgba(92, 62, 223, 0.4);
+}
+
+.modern-btn-secondary[b-mezd0hw7jf] {
+    background-color: #f4f4f4;
+    color: #0f1235;
+    border: 2px solid #7554f6; /* Cornflower Blue */
+}
+
+.modern-btn-secondary:hover[b-mezd0hw7jf] {
+    background-color: #e4e4e4;
+    color: #0f1235;
+}
+
+/* Loading Animation */
+.loading svg polyline[b-mezd0hw7jf] {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.loading svg polyline#back[b-mezd0hw7jf] {
+    fill: none;
+    stroke: #ff4d5033;
+}
+
+.loading svg polyline#front[b-mezd0hw7jf] {
+    fill: none;
+    stroke: #ff4d4f;
+    stroke-dasharray: 48, 144;
+    stroke-dashoffset: 192;
+    animation: dash_682-b-mezd0hw7jf 1.4s linear infinite;
+}
+
+@keyframes dash_682-b-mezd0hw7jf {
+    72.5% {
+        opacity: 0;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Recommendation Result */
+.recommendation-result[b-mezd0hw7jf] {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-result h3[b-mezd0hw7jf] {
+    color: #0f1235;
+    margin-bottom: 10px;
+}
+
+.recommendation-result p[b-mezd0hw7jf] {
+    font-size: 1.1rem;
+    color: #333;
+}

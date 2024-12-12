@@ -1,0 +1,50 @@
+@page "/recommendation"
+@inject NavigationManager NavigationManager
+
+<div class="recommendation-container">
+    <h2 class="page-title">Get Your Personalized Recommendation</h2>
+    <p class="page-subtitle">Based on your data, our AI will generate a personalized insurance recommendation for you.</p>
+
+    <button class="btn modern-btn" @onclick="SimulateRecommendation" disabled="@isLoading">
+        Get Recommendation
+    </button>
+
+    <div class="loading" style="display: @(isLoading ? "block" : "none")">
+        <svg width="64px" height="48px">
+            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
+            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
+        </svg>
+    </div>
+
+    <div class="recommendation-result" style="display: @(showResult ? "block" : "none")">
+        <h3>Your Recommendation:</h3>
+        <p>@recommendation</p>
+        <button class="btn modern-btn-secondary" @onclick="ResetPage">Start Over</button>
+    </div>
+</div>
+
+@code {
+    private bool isLoading = false;
+    private bool showResult = false;
+    private string recommendation = string.Empty;
+
+    private async Task SimulateRecommendation()
+    {
+        isLoading = true;
+        showResult = false;
+
+        // Simulate loading for 5 seconds
+        await Task.Delay(5000);
+
+        recommendation = "Based on your data, we recommend the Comprehensive Insurance Package with extended coverage for Heart and Lungs.";
+        isLoading = false;
+        showResult = true;
+    }
+
+    private void ResetPage()
+    {
+        isLoading = false;
+        showResult = false;
+        recommendation = string.Empty;
+    }
+}

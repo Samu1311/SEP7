@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
@@ -6,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using WebApiSEP7.Models; // Ensure this is the correct namespace for your models
+using WebApiSEP7.Data; // Ensure this is the correct namespace for your DbContext
 
 namespace SEP7.Controllers
 {
@@ -40,9 +43,7 @@ namespace SEP7.Controllers
                 DateOfBirth = model.DateOfBirth,
                 Gender = model.Gender,
                 EmergencyContact = model.EmergencyContact,
-                PhoneNumber = model.PhoneNumber, // Ensure this field is set
-                Discount = model.Discount,
-                SubscriptionId = model.SubscriptionId
+                PhoneNumber = model.PhoneNumber // Ensure this field is set
             };
 
             _context.Users.Add(user);
@@ -53,6 +54,7 @@ namespace SEP7.Controllers
 
         // Get all users
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
         {
             return await _context.Users.ToListAsync();
@@ -60,6 +62,7 @@ namespace SEP7.Controllers
 
         // Get user by ID
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -73,6 +76,7 @@ namespace SEP7.Controllers
 
         // Update user
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] User model)
         {
             if (id != model.UserId)
@@ -98,7 +102,7 @@ namespace SEP7.Controllers
             user.EmergencyContact = model.EmergencyContact;
             user.PhoneNumber = model.PhoneNumber;
             user.Discount = model.Discount;
-            user.SubscriptionId = model.SubscriptionId;
+            user.SubscriptionId = model.SubscriptionId; // This can be null
 
             await _context.SaveChangesAsync();
 
@@ -107,6 +111,7 @@ namespace SEP7.Controllers
 
         // Delete user
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);

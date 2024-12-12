@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using WebApiSEP7; // Ensure this is the correct namespace for your DbContext
+using WebApiSEP7.Data;
+using WebApiSEP7.Models; // Ensure this is the correct namespace for your DbContext
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,7 +47,7 @@ builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("http://localhost:5110") // Allow UI origin
+        policy.WithOrigins("http://localhost:5075") // Allow UI origin
               .AllowAnyHeader()
               .AllowAnyMethod();
     });

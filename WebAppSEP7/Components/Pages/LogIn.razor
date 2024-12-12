@@ -1,0 +1,80 @@
+@page "/login"
+@using Microsoft.AspNetCore.Components
+@using System.Net.Http
+@using System.Net.Http.Json
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+<div class="login-container">
+    <div class="login-card">
+        <h2 class="text-center login-title">Welcome Back</h2>
+        <p class="text-center login-subtitle">Please log in to your account</p>
+        <EditForm Model="@loginModel" OnValidSubmit="HandleLogin">
+            <DataAnnotationsValidator />
+            <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+            <div class="mb-4">
+                <label for="email" class="form-label">Email</label>
+                <InputText id="email" class="form-control modern-input" placeholder="Enter your email" @bind-Value="loginModel.Email" />
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <InputText id="password" type="password" class="form-control modern-input" placeholder="Enter your password" @bind-Value="loginModel.Password" />
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn modern-btn">Log In</button>
+            </div>
+        </EditForm>
+        <div class="text-center mt-4">
+            <p>Don't have an account? <a href="/signup" class="modern-link">Sign Up</a></p>
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private string debugMessage;
+
+    private async Task HandleLogin()
+    {
+        debugMessage = "Attempting to log in...";
+        var client = HttpClientFactory.CreateClient("SEP7API");
+        var response = await client.PostAsJsonAsync("login/login", loginModel);
+        if (response.IsSuccessStatusCode)
+        {
+            debugMessage = "Login successful!";
+            var result = await response.Content.ReadFromJsonAsync<LoginResult>();
+            await LocalStorage.SetItemAsync("authToken", result.Token);
+            await LocalStorage.SetItemAsync("userProfile", result.User);
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            debugMessage = "Login failed: " + await response.Content.ReadAsStringAsync();
+        }
+    }
+
+    public class LoginModel
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
+    public class LoginResult
+    {
+        public string Token { get; set; }
+        public User User { get; set; }
+    }
+
+    public class User
+    {
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public string Gender { get; set; }
+        public string EmergencyContact { get; set; }
+    }
+}

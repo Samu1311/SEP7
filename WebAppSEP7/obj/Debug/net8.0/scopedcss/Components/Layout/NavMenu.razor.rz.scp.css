@@ -1,6 +1,6 @@
 /* General Navbar Styling */
 .bg-primary[b-kfv5ransuu] {
-    background-color: #001f40 !important; /* Deep blue */
+    background-color: #0f1235 !important; /* Deep blue */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -31,7 +31,7 @@ body[b-kfv5ransuu] {
 }
 
 .navbar-brand:hover[b-kfv5ransuu] {
-    color: #f8d569 !important;
+    color: #f9ffd7 !important;
     transition: color 0.3s ease-in-out;
 }
 
@@ -54,12 +54,12 @@ body[b-kfv5ransuu] {
 }
 
 [b-kfv5ransuu] .nav-link:hover {
-    color: #f8d569 !important;
+    color: #f9ffd7 !important;
 }
 
 [b-kfv5ransuu] .nav-link.active {
-    color: #f8d569 !important;
-    border-bottom: 2px solid #f8d569;
+    color: #f9ffd7!important;
+    border-bottom: 2px solid #f9ffd7;
 }
 
 /* Navbar Toggler */
@@ -110,7 +110,7 @@ body[b-kfv5ransuu] {
 /* Collapsible Navbar Styling */
 .collapse[b-kfv5ransuu] {
     transition: height 0.3s ease-in-out;
-    background-color: #001f40;
+    background-color: #0f1235;
 }
 
 /* Mobile-Specific Styling for screens up to 767px */
@@ -140,7 +140,7 @@ body[b-kfv5ransuu] {
         top: 80px; /* Dropdown opens just below the navbar */
         left: 0;
         width: 100%; /* Full-width dropdown */
-        background-color: #001f40; /* Same background as navbar */
+        background-color: #0f1235; /* Same background as navbar */
         transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
         overflow: hidden;
         max-height: 0; /* Initially collapsed */
@@ -179,7 +179,7 @@ body[b-kfv5ransuu] {
         top: 80px; /* Dropdown opens just below the navbar */
         left: 0;
         width: 100%; /* Full-width dropdown */
-        background-color: #001f40; /* Same background as navbar */
+        background-color: #0f1235; /* Same background as navbar */
         transition: max-height 0.3s ease-in-out; /* Smooth opening/closing */
         overflow: hidden;
         max-height: 0; /* Initially collapsed */

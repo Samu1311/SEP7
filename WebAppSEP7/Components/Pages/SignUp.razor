@@ -1,0 +1,147 @@
+@page "/signup"
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager NavigationManager
+@inject IHttpClientFactory HttpClientFactory
+
+<div class="signup-container">
+    <div class="signup-card">
+        <h2 class="text-center signup-title">Create Your Account</h2>
+        <p class="text-center signup-subtitle">Join us for personalized insurance services</p>
+        <EditForm Model="@signupFormModel" OnValidSubmit="HandleSignup">
+            <DataAnnotationsValidator />
+            <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+            <div class="mb-4">
+                <label for="firstName" class="form-label">First Name</label>
+                <InputText id="firstName" class="form-control modern-input" placeholder="Enter your first name" @bind-Value="signupFormModel.FirstName" />
+                <ValidationMessage For="@(() => signupFormModel.FirstName)" />
+            </div>
+            <div class="mb-4">
+                <label for="lastName" class="form-label">Last Name</label>
+                <InputText id="lastName" class="form-control modern-input" placeholder="Enter your last name" @bind-Value="signupFormModel.LastName" />
+                <ValidationMessage For="@(() => signupFormModel.LastName)" />
+            </div>
+            <div class="mb-4">
+                <label for="email" class="form-label">Email</label>
+                <InputText id="email" class="form-control modern-input" placeholder="Enter your email" @bind-Value="signupFormModel.Email" />
+                <ValidationMessage For="@(() => signupFormModel.Email)" />
+            </div>
+            <div class="mb-4">
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <InputText id="phoneNumber" class="form-control modern-input" placeholder="Enter your phone number" @bind-Value="signupFormModel.PhoneNumber" />
+                <ValidationMessage For="@(() => signupFormModel.PhoneNumber)" />
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <div class="password-container">
+                    <InputText id="password" type="@passwordInputType" class="form-control modern-input" placeholder="Enter your password" @bind-Value="signupFormModel.PasswordHash" />
+                    <button type="button" class="password-toggle-btn" @onclick="TogglePasswordVisibility">@passwordToggleText</button>
+                </div>
+                <ValidationMessage For="@(() => signupFormModel.PasswordHash)" />
+            </div>
+            <div class="mb-4">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <InputText id="confirmPassword" type="@passwordInputType" class="form-control modern-input" placeholder="Confirm your password" @bind-Value="confirmPassword" />
+                <ValidationMessage For="@(() => confirmPassword)" />
+            </div>
+            <div class="mb-4">
+                <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                <InputDate id="dateOfBirth" class="form-control modern-input" @bind-Value="signupFormModel.DateOfBirth" />
+                <ValidationMessage For="@(() => signupFormModel.DateOfBirth)" />
+            </div>
+            <div class="mb-4">
+                <label for="gender" class="form-label">Gender</label>
+                <InputSelect id="gender" class="form-control modern-dropdown" @bind-Value="signupFormModel.Gender">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </InputSelect>
+                <ValidationMessage For="@(() => signupFormModel.Gender)" />
+            </div>
+            <div class="mb-4">
+                <label for="emergencyContact" class="form-label">Emergency Contact</label>
+                <InputText id="emergencyContact" class="form-control modern-input" placeholder="Enter your emergency contact" @bind-Value="signupFormModel.EmergencyContact" />
+                <ValidationMessage For="@(() => signupFormModel.EmergencyContact)" />
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn modern-btn">Sign Up</button>
+            </div>
+        </EditForm>
+        <div class="text-center mt-4">
+            <p>Already have an account? <a href="/login" class="modern-link">Log In</a></p>
+        </div>
+    </div>
+</div>
+
+@code {
+    private SignupFormModel signupFormModel = new SignupFormModel();
+    private string confirmPassword;
+    private string passwordInputType = "password";
+    private string passwordToggleText = "Show";
+    private string debugMessage;
+
+    private async Task HandleSignup()
+    {
+        if (signupFormModel.PasswordHash != confirmPassword)
+        {
+            debugMessage = "Passwords do not match.";
+            return;
+        }
+
+        debugMessage = "Attempting to sign up...";
+        var client = HttpClientFactory.CreateClient("SEP7API");
+        var response = await client.PostAsJsonAsync("user/register", signupFormModel);
+        if (response.IsSuccessStatusCode)
+        {
+            debugMessage = "Signup successful!";
+            NavigationManager.NavigateTo("/login");
+        }
+        else
+        {
+            debugMessage = "Signup failed: " + await response.Content.ReadAsStringAsync();
+        }
+    }
+
+    private void TogglePasswordVisibility()
+    {
+        if (passwordInputType == "password")
+        {
+            passwordInputType = "text";
+            passwordToggleText = "Hide";
+        }
+        else
+        {
+            passwordInputType = "password";
+            passwordToggleText = "Show";
+        }
+    }
+
+    public class SignupFormModel
+    {
+        [Required]
+        public string FirstName { get; set; } = string.Empty;
+
+        [Required]
+        public string LastName { get; set; } = string.Empty;
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        [Phone]
+        public string PhoneNumber { get; set; } = string.Empty;
+
+        [Required]
+        [MinLength(6)]
+        public string PasswordHash { get; set; } = string.Empty; // Match backend naming
+
+        public DateTime? DateOfBirth { get; set; }
+
+        public string? Gender { get; set; }
+
+        [Required]
+        [Phone]
+        public string EmergencyContact { get; set; } = string.Empty;
+    }
+}
