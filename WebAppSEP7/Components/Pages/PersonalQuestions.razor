@@ -1,0 +1,68 @@
+@page "/personal-questions"
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+
+<section class="health-overview">
+    <div class="titleNice">Personal Overview Assessment</div>
+</section>
+
+<section id="health-form" class="health-form">
+    <div class="edit-medical-data-container">    
+    <div class="info-box-medical-box">
+        <div class="profile-card">
+            <h2 class="section-title">Personal Information</h2>
+            
+            <div class="form-group">
+                <label for="Pregnancy">Are you currently pregnant?</label>
+                <select id="pregnancy" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Weight">Weight (kg)</label>
+                <input type="number" id="weight" class="form-control" placeholder="Enter your weight" min="0">
+            </div>
+
+            <div class="form-group">
+                <label for="Height">Height (cm)</label>
+                <input type="number" id="height" class="form-control" placeholder="Enter your height" min="0">
+            </div>
+
+            <hr />
+
+            <h2 class="section-title">Lifestyle Habits</h2>
+
+            <div class="form-group">
+                <label for="Smoking">Do you smoke?</label>
+                <select id="smoking" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="Alcohol">Do you consume alcohol?</label>
+                <select id="alcohol" class="form-control">
+                    <option value="">Select an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary save-btn" @onclick="NavigateToForm" >Save Your Personal Data</button>
+        </div>
+    </div>
+</div>
+</section>
+
+@code {
+    private void NavigateToForm()
+    {
+        NavigationManager.NavigateTo("/AIform#survey-section");
+    }
+
+}

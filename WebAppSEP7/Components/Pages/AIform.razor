@@ -111,7 +111,7 @@
 </div>
 </diV>
 
-<div class="survey-section">
+<div class="survey-section" id="survey-section">
     <p>
         Ready to begin your journey towards tailored insurance coverage? Answer the questions below to get started.
     </p>
@@ -140,16 +140,16 @@
 @code {
     private void NavigateToPersonal()
     {
-        NavigationManager.NavigateTo("/PersonalQuestions");
+        NavigationManager.NavigateTo("/personal-questions");
     }
 
     private void NavigateToMedical()
     {
-        NavigationManager.NavigateTo("/MedicalQuestions");
+        NavigationManager.NavigateTo("/medical-questions");
     }
 
     private void NavigateToResults()
     {
-        NavigationManager.NavigateTo("/Results");
+        NavigationManager.NavigateTo("/results");
     }
 }

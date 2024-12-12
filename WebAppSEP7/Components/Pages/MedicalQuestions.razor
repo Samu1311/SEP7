@@ -1,36 +1,15 @@
-@page "/MedicalQuestions"
+@page "/medical-questions"
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager NavigationManager
 
 <section class="health-overview">
-    <div class="titleNice">Medical Health Overview Assessment</div>
-    <div class="container1">
-        <div class="text-content">
-                <p class="description">
-                    
-                </p>
-        </div>
-        <div class="image-content">
-                <img src="" alt="" class="overview-image" />   
-        </div>       
-    </div>
-    <div class="container2">
-        <div class="text-content">
-                <p class="description">
-                    
-                </p>
-        </div>    
-    </div>
+    <div class="titleNice">Medical Health Overview Assessment</div>  
 </section>
 
 <section id="health-form" class="health-form">
-    <div class="edit-medical-data-container">
-    <h1 class="page-title">Medical Health Overview</h1>
-    
+    <div class="edit-medical-data-container">    
     <div class="info-box-medical-box">
         <div class="profile-card">
-            <h2 class="section-title">Medical Information</h2>
-
             <div class="form-group">
                 <label for="Blood_pressure">What is your resting blood pressure? </label>
                 <input type="number" id="blood_pressure" class="form-control" placeholder="Enter your blood pressure" min="0">
@@ -42,12 +21,7 @@
             </div>
 
             <div class="form-group">
-                <label for="Insuline">What is your insuline level?</label>
-                <input type="number" id="insuline" class="form-control" placeholder="Enter your insuline level" min="0">
-            </div>
-
-            <div class="form-group">
-                <label for="Glucose">What is your glucose level?</label>
+                <label for="Glucose">What is your blood glucose level?</label>
                 <input type="number" id="glucose" class="form-control" placeholder="Enter your glucose level" min="0">
             </div>
 
@@ -57,13 +31,8 @@
             </div>
 
             <div class="form-group">
-                <label for="Blood_sugar">What is your fasting blood sugar level?</label>
-                <input type="number" id="blood_sugar" class="form-control" placeholder="Enter your fasting blood sugar" min="0">
-            </div>
-
-            <div class="form-group">
-                <label for="Hemoglobin">What is your hemoglobin level?</label>
-                <input type="number" id="hemoglobin" class="form-control" placeholder="Enter your glucose level" min="0">
+                <label for="Hemoglobin">What is your hemoglobin A1c level?</label>
+                <input type="number" id="hemoglobin" class="form-control" placeholder="Enter your hemoglobin level" min="0">
             </div>
 
             <div class="form-group">
@@ -85,48 +54,19 @@
             </div>
 
             <div class="form-group">
-                <label for="Allergies">Do you have any allergies?</label>
-                <select id="allergies" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="Diabetes">Do you suffer from diabetes?</label>
-                <select id="diabetes" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-
-             <div class="form-group">
-                <label for="Anxiety">Do you suffer from anxiety?</label>
-                <select id="anxiety" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-
-            <hr />
-
-            <h2 class="section-title">Lifestyle Information</h2>
-
-            <div class="form-group">
-                <label for="Chest">Do you suffer from chest pain daily?</label>
+                <label for="Chest">Do you suffer from any chestpain?</label>
                 <select id="chest" class="form-control">
                     <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value="TA">Typical Angina</option>
+                    <option value="ATA">Atypical Angina</option>
+                    <option value="NAP">Non-Anginal Pain</option>
+                    <option value="ASY">I don't suffer from chestpain</option>
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="Exercising">Do you suffer from chest pain while exercising?</label>
-                <select id="exercising" class="form-control">
+                 <div class="form-group">
+                <label for="Angina">Do you suffer from exercise induced angina?</label>
+                <select id="angina" class="form-control">
                     <option value="">Select an option</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -134,62 +74,41 @@
             </div>
 
             <div class="form-group">
-                <label for="Cough">Do you suffer from chronic coughing?</label>
-                <select id="cough" class="form-control">
+                <label for="ECG">What are your resting electrocardiogram (ECG) results?</label>
+                <select id="ecg" class="form-control">
                     <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value="Normal">Normal</option>
+                    <option value="ST">I have ST-T wave abnormality</option>
+                    <option value="LVH">Showing probable or definite left ventricular hypertrophy</option>
                 </select>
             </div>
 
              <div class="form-group">
-                <label for="Wheezing">Do you suffer from wheezing?</label>
-                <select id="wheezing" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
+                <label for="Oldpeak">What is your oldpeak?</label>
+                <input type="number" id="oldpeak" class="form-control" placeholder="Enter your oldpeak = ST" min="0">
             </div>
 
             <div class="form-group">
-                <label for="Breathing">Do you suffer from shortness of breath?</label>
-                <select id="breathing" class="form-control">
+                <label for="ST_Slope">What is your ST slope of the peak exercise? </label>
+                <select id="st_slope" class="form-control">
                     <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="Fingers">Do you suffer from yellow fingers?</label>
-                <select id="fingers" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="Pressure">Did you suffer from peer pressure over the last 6 months?</label>
-                <select id="pressure" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="Swallowing">Do you suffer from difficulty of swallowing?</label>
-                <select id="swallowing" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
+                    <option value="Up">Upsloping</option>
+                    <option value="Flat">Flat</option>
+                    <option value="Down">Downsloping</option>
                 </select>
             </div>
 
 
-            <button type="button" class="btn btn-primary save-btn">Save Changes</button>
+            <button type="button" class="btn btn-primary save-btn" @onclick="NavigateToForm" >Save Your Medical Data</button>
         </div>
     </div>
 </div>
 </section>
+
+@code {
+    private void NavigateToForm()
+    {
+        NavigationManager.NavigateTo("/AIform#survey-section");
+    }
+
+}

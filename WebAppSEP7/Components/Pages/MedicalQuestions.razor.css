@@ -168,14 +168,14 @@ body {
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 30px;
-    color: #004085;
+    color: #090c33;
 }
 
 .info-box-medical-box {
     padding: 20px;
     border-radius: 12px;
     background-color: #ffffff;
-    border: 1px solid #219ebc;
+    border: 1px solid #090c33;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -189,7 +189,7 @@ body {
     margin-bottom: 15px;
     padding-bottom: 8px;
     border-bottom: 3px solid #219ebc;
-    color: #004085;
+    color: #090c33;
 }
 
 .form-group {
@@ -201,7 +201,7 @@ label {
     font-size: 1.1rem;
     margin-bottom: 8px;
     display: block;
-    color: #004085;
+    color: #090c33;
 }
 
 .form-control {
@@ -229,28 +229,26 @@ select.form-control {
 }
 
 .save-btn {
-    display: block;
     width: 100%;
     padding: 15px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border-radius: 8px;
-    background-color: #219ebc;
-    color: #ffffff;
-    border: none;
+    margin-top: 20px;
+    height: 70px;
+    border: 3px solid #090c33;
+    border-radius: 45px;
+    transition: all 0.3s;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    background: white;
+    font-size: 0.9em;
+    font-weight: 550;
+    color: #090c33;
 }
 
 .save-btn:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
+    background-color: #090c33;
+    color: white;
+    font-size: 1em;
 }
 
-.save-btn:active {
-    background-color: #003366;
-    transform: translateY(0);
-}
 
 hr {
     border: none;
