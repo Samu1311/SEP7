@@ -45,6 +45,7 @@ builder.Services.Configure<FormOptions>(options =>
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 // Enable CORS
 builder.Services.AddCors(options =>
 {
@@ -64,6 +65,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Initialize the database with initial data
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    DbInitializer.Initialize(services);
+}
 
 // Enable Swagger only in Development
 if (app.Environment.IsDevelopment())
