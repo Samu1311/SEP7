@@ -1,0 +1,170 @@
+<!-- About Us Page -->
+@page "/about-us"
+@inherits LayoutComponentBase
+
+<div class="about-us-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>About Gjensidige</h1>
+                <p>Gjensidige works every day to ensure peace of mind and help you when the unexpected happens. With a history spanning generations, we are committed to your safety and security.</p>
+            </div>
+            <div class="hero-image">
+                <img src="/Images/people_in_business.jpg" alt="Hero Image">
+            </div>
+        </div>
+    </div>
+
+    <!-- History Section -->
+    <div class="history-section">
+        <h2>Our History</h2>
+        <p>With over 200 years of experience, Gjensidige is one of the leading insurance companies in the Nordics. We have deep roots and a strong heritage, focusing on trust, quality, and responsibility.</p>
+    </div>
+
+    <!-- Mission and Vision Section -->
+    <div class="mission-vision-section">
+        <h2>Mission and Vision</h2>
+        <p>Our mission is to provide personalized and innovative insurance solutions, ensuring peace of mind for our customers. Our vision is to lead the industry with a customer-centric approach.</p>
+    </div>
+
+   
+    <!-- Operations Section -->
+<div class="operations-section">
+    <div class="operations-image">
+        <img src="/Images/Operations_photo.jpg" alt="Operations">
+    </div>
+    <div class="operations-text">
+        <h2>Our Operations</h2>
+        <p>
+            Gjensidige is a leading Nordic insurance company with operations across Norway, Sweden, Denmark, and the Baltics. 
+            We have provided trusted insurance services for over 200 years.
+        </p>
+        <button class="btn-outline">Strategy and Targets</button>
+        <button class="btn-outline">Annual Report 2023</button>
+    </div>
+</div>
+
+ <!-- technologies-section -->
+  <div class="technologies-section">
+    <h3>The Technology Driving Gjensidige</h3>
+    <div class="process-steps">
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h4>Machine Learning</h4>
+                    <p>Empowering preventive care by analyzing medical data to identify health risks early.</p>
+                </div>
+                <div class="card-back">
+                    <p>We use machine learning to predict potential risks and provide tailored insurance solutions.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h4>Data Analytics</h4>
+                    <p>Leveraging datasets to create personalized health and insurance insights.</p>
+                </div>
+                <div class="card-back">
+                    <p>Data analytics helps us understand customer needs and optimize insurance policies effectively.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h4>Cloud Infrastructure</h4>
+                    <p>Ensuring scalability and reliability across regions.</p>
+                </div>
+                <div class="card-back">
+                    <p>Our cloud-based systems ensure secure and efficient access to services across geographies.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h4>Sustainability Integration</h4>
+                    <p>Supporting ESG goals through transparency and ethical practices.</p>
+                </div>
+                <div class="card-back">
+                    <p>Our commitment to sustainability reflects in every aspect of our business operations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Sustainability Section -->
+    <div class="sustainability-section">
+        <h2>Our Commitment to Sustainability</h2>
+        <div class="sustainability-content">
+            <img src="\Images\sustainability.jpg" alt="Sustainability">
+            <p>Gjensidige has worked for over 200 years to safeguard lives, health, and assets in a sustainable way. We strive to contribute to society with injury prevention and environmental initiatives.</p>
+        </div>
+    </div>
+
+    <!-- Founders Section -->
+    <div class="founders-section">
+        <h2>Meet Our Team</h2>
+        <div class="founders">
+            <div class="founder-card">
+                <img src="/images/CEO.jpg" alt="John Doe" class="founder-image">
+                <h3 class="founder-name">John Doe</h3>
+                <p class="founder-title">Chief Executive Officer (CEO)</p>
+                <p>John drives the strategic vision of Gjensidige, ensuring innovative solutions for our customers.</p>
+            </div>
+            <div class="founder-card">
+                <img src="/images/CEO2.jpg" alt="Jane Smith" class="founder-image">
+                <h3 class="founder-name">Jane Smith</h3>
+                <p class="founder-title">Chief Operations Officer (COO)</p>
+                <p>Jane ensures operational excellence and customer satisfaction at every level.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fun Facts Section -->
+    <div class="fun-fact-section">
+        <h2>Did You Know?</h2>
+        <p>@currentFunFact</p>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <p>© 2024 Gjensidige. All rights reserved.</p>
+    <ul>
+        <li><a href="/AIdescription">Terms of Service</a></li>
+        <li><a href="/HealthData">Privacy Policy</a></li>
+        <li><a href="/contact-us">Contact Us</a></li>
+    </ul>
+</footer>
+
+@code {
+    private string currentFunFact = "Gjensidige has been a trusted partner for over 200 years, serving millions of customers across the Nordics.";
+    private readonly List<string> funFacts = new()
+    {
+        "Gjensidige has been a trusted partner for over 200 years, serving millions of customers across the Nordics.",
+        "Our innovative solutions help thousands of customers every day.",
+        "Gjensidige invests heavily in sustainability and environmental initiatives.",
+        "We prioritize customer satisfaction above all else.",
+        "Our team is dedicated to ensuring peace of mind for our clients."
+    };
+
+    protected override void OnInitialized()
+    {
+        StartFunFactRotation();
+    }
+
+    private async void StartFunFactRotation()
+    {
+        while (true)
+        {
+            await Task.Delay(5000); // Change every 5 seconds
+            var random = new Random();
+            currentFunFact = funFacts[random.Next(funFacts.Count)];
+            StateHasChanged();
+        }
+    }
+}

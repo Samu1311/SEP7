@@ -17,7 +17,7 @@ namespace WebApiSEP7.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
-            modelBuilder.Entity("Category", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
@@ -32,114 +32,113 @@ namespace WebApiSEP7.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("HealthcareInformation", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.MedicalInformation", b =>
                 {
-                    b.Property<int>("HealthcareInformationId")
+                    b.Property<int>("MedicalInformationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Alcohol")
+                    b.Property<float>("BMI")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("BloodGlucoseLevel")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Allergies")
+                    b.Property<int>("ChestPainType")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Anxiety")
+                    b.Property<int>("Cholesterol")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal?>("BMI")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("BloodPressure")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("BloodType")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ChestPain")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("Cholesterol")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("ChronicDiseases")
+                    b.Property<int>("Diabetes")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Coughing")
+                    b.Property<int>("ExerciseAngina")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Exercise")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("ExerciseInducedAngina")
+                    b.Property<int>("FastingBS")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal?>("FastingBloodSugar")
-                        .HasColumnType("TEXT");
+                    b.Property<float>("HbA1cLevel")
+                        .HasColumnType("REAL");
 
-                    b.Property<bool>("Fatigue")
+                    b.Property<int>("HeartDisease")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal?>("GlucoseLevel")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("Height")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("InsulinLevel")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("PeerPressure")
+                    b.Property<int>("Hypertension")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Pregnancy")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("RestingECGResults")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("Saturation")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("ShortnessOfBreath")
+                    b.Property<int>("MaxHR")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal?>("SkinThickness")
-                        .HasColumnType("TEXT");
+                    b.Property<float>("Oldpeak")
+                        .HasColumnType("REAL");
 
-                    b.Property<bool>("Smoking")
+                    b.Property<int>("RestingBP")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("SwallowingDifficulty")
+                    b.Property<int>("RestingECG")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RestingECG_LVH")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RestingECG_Normal")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RestingECG_ST")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("STSlope")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SmokingHistory")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal?>("Weight")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("Wheezing")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("YellowFingers")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("HealthcareInformationId");
+                    b.HasKey("MedicalInformationId");
 
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("HealthcareInformations");
+                    b.ToTable("MedicalInformations");
                 });
 
-            modelBuilder.Entity("Service", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.PersonalInformation", b =>
+                {
+                    b.Property<int>("PersonalInformationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ConsumesAlcohol")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<float>("Height")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("IsPregnant")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Smokes")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<float>("Weight")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("PersonalInformationId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("PersonalInformations");
+                });
+
+            modelBuilder.Entity("WebApiSEP7.Models.Service", b =>
                 {
                     b.Property<int>("ServiceId")
                         .ValueGeneratedOnAdd()
@@ -166,7 +165,7 @@ namespace WebApiSEP7.Migrations
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("Subscription", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.Subscription", b =>
                 {
                     b.Property<int>("SubscriptionId")
                         .ValueGeneratedOnAdd()
@@ -183,7 +182,7 @@ namespace WebApiSEP7.Migrations
                     b.ToTable("Subscriptions");
                 });
 
-            modelBuilder.Entity("SubscriptionCategory", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.SubscriptionCategory", b =>
                 {
                     b.Property<int>("SubscriptionCategoryId")
                         .ValueGeneratedOnAdd()
@@ -204,7 +203,7 @@ namespace WebApiSEP7.Migrations
                     b.ToTable("SubscriptionCategories");
                 });
 
-            modelBuilder.Entity("User", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -254,20 +253,31 @@ namespace WebApiSEP7.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("HealthcareInformation", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.MedicalInformation", b =>
                 {
-                    b.HasOne("User", "User")
-                        .WithOne("HealthcareInformation")
-                        .HasForeignKey("HealthcareInformation", "UserId")
+                    b.HasOne("WebApiSEP7.Models.User", "User")
+                        .WithOne("MedicalInformation")
+                        .HasForeignKey("WebApiSEP7.Models.MedicalInformation", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Service", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.PersonalInformation", b =>
                 {
-                    b.HasOne("Category", "Category")
+                    b.HasOne("WebApiSEP7.Models.User", "User")
+                        .WithOne("PersonalInformation")
+                        .HasForeignKey("WebApiSEP7.Models.PersonalInformation", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("WebApiSEP7.Models.Service", b =>
+                {
+                    b.HasOne("WebApiSEP7.Models.Category", "Category")
                         .WithMany("Services")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -276,15 +286,15 @@ namespace WebApiSEP7.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("SubscriptionCategory", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.SubscriptionCategory", b =>
                 {
-                    b.HasOne("Category", "Category")
+                    b.HasOne("WebApiSEP7.Models.Category", "Category")
                         .WithMany("SubscriptionCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Subscription", "Subscription")
+                    b.HasOne("WebApiSEP7.Models.Subscription", "Subscription")
                         .WithMany("SubscriptionCategories")
                         .HasForeignKey("SubscriptionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -295,33 +305,34 @@ namespace WebApiSEP7.Migrations
                     b.Navigation("Subscription");
                 });
 
-            modelBuilder.Entity("User", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.User", b =>
                 {
-                    b.HasOne("Subscription", "Subscription")
+                    b.HasOne("WebApiSEP7.Models.Subscription", "Subscription")
                         .WithMany("Users")
-                        .HasForeignKey("SubscriptionId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("SubscriptionId");
 
                     b.Navigation("Subscription");
                 });
 
-            modelBuilder.Entity("Category", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.Category", b =>
                 {
                     b.Navigation("Services");
 
                     b.Navigation("SubscriptionCategories");
                 });
 
-            modelBuilder.Entity("Subscription", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.Subscription", b =>
                 {
                     b.Navigation("SubscriptionCategories");
 
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("User", b =>
+            modelBuilder.Entity("WebApiSEP7.Models.User", b =>
                 {
-                    b.Navigation("HealthcareInformation");
+                    b.Navigation("MedicalInformation");
+
+                    b.Navigation("PersonalInformation");
                 });
 #pragma warning restore 612, 618
         }

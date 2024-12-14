@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+builder.Services.AddHttpClient<PredictionService>();
 
 // Add HttpClient for API calls
 builder.Services.AddHttpClient("SEP7API", client =>

@@ -5,6 +5,7 @@
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager NavigationManager
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject CustomAuthenticationStateProvider AuthProvider
 
 <div class="login-container">
     <div class="login-card">
@@ -39,13 +40,14 @@
     {
         debugMessage = "Attempting to log in...";
         var client = HttpClientFactory.CreateClient("SEP7API");
-        var response = await client.PostAsJsonAsync("login/login", loginModel);
+        var response = await client.PostAsJsonAsync("Login/login", loginModel); // Ensure the URI is relative to the BaseAddress
         if (response.IsSuccessStatusCode)
         {
             debugMessage = "Login successful!";
             var result = await response.Content.ReadFromJsonAsync<LoginResult>();
             await LocalStorage.SetItemAsync("authToken", result.Token);
             await LocalStorage.SetItemAsync("userProfile", result.User);
+            AuthProvider.MarkUserAsAuthenticated(result.Token);
             NavigationManager.NavigateTo("/");
         }
         else

@@ -18,6 +18,7 @@ namespace WebApiSEP7.Models
 
         // Navigation properties
         public Subscription? Subscription { get; set; }
-        public HealthcareInformation? HealthcareInformation { get; set; }
+        public MedicalInformation? MedicalInformation { get; set; }
+        public PersonalInformation? PersonalInformation { get; set; } 
     }
 }

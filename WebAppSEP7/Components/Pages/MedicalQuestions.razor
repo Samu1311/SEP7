@@ -3,112 +3,145 @@
 @inject NavigationManager NavigationManager
 
 <section class="health-overview">
-    <div class="titleNice">Medical Health Overview Assessment</div>  
+    <div class="titleNice">Medical Overview Assessment</div>
 </section>
 
 <section id="health-form" class="health-form">
     <div class="edit-medical-data-container">    
     <div class="info-box-medical-box">
         <div class="profile-card">
-            <div class="form-group">
-                <label for="Blood_pressure">What is your resting blood pressure? </label>
-                <input type="number" id="blood_pressure" class="form-control" placeholder="Enter your blood pressure" min="0">
-            </div>
+            <EditForm Model="@medicalInformation" OnValidSubmit="@SaveMedicalData">
+                <DataAnnotationsValidator />
+                <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
 
-            <div class="form-group">
-                <label for="Heart_rate">What is your maximum heart rate achieved? </label>
-                <input type="number" id="heart_rate" class="form-control" placeholder="Enter your maxmum heart rate" min="0">
-            </div>
+                <div class="form-group">
+                    <label for="Blood_pressure">What is your resting blood pressure? </label>
+                    <InputNumber id="blood_pressure" class="form-control" @bind-Value="medicalInformation.RestingBP" />
+                </div>
 
-            <div class="form-group">
-                <label for="Glucose">What is your blood glucose level?</label>
-                <input type="number" id="glucose" class="form-control" placeholder="Enter your glucose level" min="0">
-            </div>
+                <div class="form-group">
+                    <label for="Heart_rate">What is your maximum heart rate achieved? </label>
+                    <InputNumber id="heart_rate" class="form-control" @bind-Value="medicalInformation.MaxHR" />
+                </div>
 
-            <div class="form-group">
-                <label for="Cholesterol">What is your cholesterol level?</label>
-                <input type="number" id="cholesterol" class="form-control" placeholder="Enter your cholesterol level" min="0">
-            </div>
+                <div class="form-group">
+                    <label for="Cholesterol">What is your cholesterol level? </label>
+                    <InputNumber id="cholesterol" class="form-control" @bind-Value="medicalInformation.Cholesterol" />
+                </div>
 
-            <div class="form-group">
-                <label for="Hemoglobin">What is your hemoglobin A1c level?</label>
-                <input type="number" id="hemoglobin" class="form-control" placeholder="Enter your hemoglobin level" min="0">
-            </div>
+                <div class="form-group">
+                    <label for="FastingBS">Is your fasting blood sugar > 120 mg/dl? </label>
+                    <InputSelect id="fastingBS" class="form-control" @bind-Value="medicalInformation.FastingBS">
+                        <option value="">Select an option</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </InputSelect>
+                </div>
 
-            <div class="form-group">
-                <label for="Hypertension">Do you suffer from hypertension?</label>
-                <select id="hypertension" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="ExerciseAngina">Do you experience exercise-induced angina? </label>
+                    <InputSelect id="exerciseAngina" class="form-control" @bind-Value="medicalInformation.ExerciseAngina">
+                        <option value="">Select an option</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </InputSelect>
+                </div>
 
-            <div class="form-group">
-                <label for="Heart_disease">Do you suffer from a heart disease? </label>
-                <select id="heart_disease" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="Oldpeak">What is your ST depression induced by exercise relative to rest? </label>
+                    <InputNumber id="oldpeak" class="form-control" @bind-Value="medicalInformation.Oldpeak" />
+                </div>
 
-            <div class="form-group">
-                <label for="Chest">Do you suffer from any chestpain?</label>
-                <select id="chest" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="TA">Typical Angina</option>
-                    <option value="ATA">Atypical Angina</option>
-                    <option value="NAP">Non-Anginal Pain</option>
-                    <option value="ASY">I don't suffer from chestpain</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="ChestPainType">What is your chest pain type? </label>
+                    <InputSelect id="chestPainType" class="form-control" @bind-Value="medicalInformation.ChestPainType">
+                        <option value="">Select an option</option>
+                        <option value="0">Typical Angina</option>
+                        <option value="1">Atypical Angina</option>
+                        <option value="2">Non-Anginal Pain</option>
+                        <option value="3">Asymptomatic</option>
+                    </InputSelect>
+                </div>
 
-                 <div class="form-group">
-                <label for="Angina">Do you suffer from exercise induced angina?</label>
-                <select id="angina" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="STSlope">What is your ST slope? </label>
+                    <InputSelect id="stSlope" class="form-control" @bind-Value="medicalInformation.STSlope">
+                        <option value="">Select an option</option>
+                        <option value="0">Upsloping</option>
+                        <option value="1">Flat</option>
+                        <option value="2">Downsloping</option>
+                    </InputSelect>
+                </div>
 
-            <div class="form-group">
-                <label for="ECG">What are your resting electrocardiogram (ECG) results?</label>
-                <select id="ecg" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Normal">Normal</option>
-                    <option value="ST">I have ST-T wave abnormality</option>
-                    <option value="LVH">Showing probable or definite left ventricular hypertrophy</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="RestingECG">What is your resting ECG result? </label>
+                    <InputSelect id="restingECG" class="form-control" @bind-Value="medicalInformation.RestingECG">
+                        <option value="">Select an option</option>
+                        <option value="0">Left Ventricular Hypertrophy</option>
+                        <option value="1">Normal</option>
+                        <option value="2">ST-T wave abnormality</option>
+                    </InputSelect>
+                </div>
 
-             <div class="form-group">
-                <label for="Oldpeak">What is your oldpeak?</label>
-                <input type="number" id="oldpeak" class="form-control" placeholder="Enter your oldpeak = ST" min="0">
-            </div>
-
-            <div class="form-group">
-                <label for="ST_Slope">What is your ST slope of the peak exercise? </label>
-                <select id="st_slope" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Up">Upsloping</option>
-                    <option value="Flat">Flat</option>
-                    <option value="Down">Downsloping</option>
-                </select>
-            </div>
-
-
-            <button type="button" class="btn btn-primary save-btn" @onclick="NavigateToForm" >Save Your Medical Data</button>
+                <button type="submit" class="btn btn-primary save-btn">Save Your Medical Data</button>
+            </EditForm>
         </div>
     </div>
 </div>
 </section>
 
 @code {
-    private void NavigateToForm()
+    private MedicalInformation medicalInformation = new MedicalInformation();
+
+    private async Task SaveMedicalData()
     {
-        NavigationManager.NavigateTo("/AIform#survey-section");
+        var httpClient = HttpClientFactory.CreateClient();
+        var response = await httpClient.PostAsJsonAsync("api/UserInformation/MedicalInformation", medicalInformation);
+        if (response.IsSuccessStatusCode)
+        {
+            // Handle success (e.g., show a success message or navigate to another page)
+            NavigationManager.NavigateTo("/AIform#survey-section");
+        }
+        else
+        {
+            // Handle error (e.g., show an error message)
+        }
     }
 
+    public class MedicalInformation
+    {
+        public int MedicalInformationId { get; set; }
+        public int UserId { get; set; }
+        public int RestingBP { get; set; }
+        public int MaxHR { get; set; }
+        public int Cholesterol { get; set; }
+        public int FastingBS { get; set; }
+        public int ExerciseAngina { get; set; }
+        public float Oldpeak { get; set; }
+        public ChestPainType ChestPainType { get; set; }
+        public STSlope STSlope { get; set; }
+        public RestingECG RestingECG { get; set; }
+    }
+
+    public enum STSlope
+    {
+        Upsloping = 0,
+        Flat = 1,
+        Downsloping = 2
+    }
+
+    public enum ChestPainType
+    {
+        TypicalAngina = 0,
+        AtypicalAngina = 1,
+        NonAnginalPain = 2,
+        Asymptomatic = 3
+    }
+
+    public enum RestingECG
+    {
+        RestingECG_LVH = 0,
+        RestingECG_Normal = 1,
+        RestingECG_ST = 2
+    }
 }

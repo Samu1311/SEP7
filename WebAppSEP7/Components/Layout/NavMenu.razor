@@ -1,7 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Authorization
 @inject NavigationManager NavigationManager
-@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <nav class="navbar navbar-expand-lg bg-primary">
@@ -28,9 +28,13 @@
             <li class="nav-item">
                 <NavLink class="nav-link" href="/about-us" Match="NavLinkMatch.All">About</NavLink>
             </li>
-            <li class="nav-item">
-                <NavLink class="nav-link" href="/services">Services</NavLink>
-            </li>
+            <AuthorizeView>
+                <Authorized>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="/AIform">AI Form</NavLink>
+                    </li>
+                </Authorized>
+            </AuthorizeView>
             <AuthorizeView>
                 <Authorized>
                     <li class="nav-item">
@@ -58,8 +62,7 @@
     private async Task LogOut()
     {
         await LocalStorage.RemoveItemAsync("authToken");
-        var authStateProvider = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
-        authStateProvider.NotifyUserLogout();
+        AuthenticationStateProvider.MarkUserAsLoggedOut();
         NavigationManager.NavigateTo("/");
     }
 }

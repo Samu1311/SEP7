@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/Prediction.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQcmVkaWN0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,10 +54,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Layout/BottomMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcQm90dG9tTWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-dz010fr5e9
-
 [C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-f28uy6oihf
@@ -61,6 +61,10 @@ build_metadata.AdditionalFiles.CssScope = b-f28uy6oihf
 [C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-kfv5ransuu
+
+[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/AboutUs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBYm91dFVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-g88ww4gx52
 
 [C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/AIdescription.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBSWRlc2NyaXB0aW9uLnJhem9y
@@ -70,13 +74,17 @@ build_metadata.AdditionalFiles.CssScope = b-n16r71v211
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBSWZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-n347jip5c6
 
+[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/Contact.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250YWN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-9sf2yckred
+
 [C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/HealthData.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWFsdGhEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-o1ir5s6unq
 
-[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/HomePage.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lUGFnZS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-s7855b0t44
+[C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-pbmgn2y5hl
 
 [C:/Users/Samuele Biondi/Desktop/SEP7 - Code/SEP7.net/WebAppSEP7/Components/Pages/LogIn.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dJbi5yYXpvcg==

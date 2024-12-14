@@ -13,8 +13,28 @@
       "PackagePath": "staticwebassets\\Images\\AIform_photo.jpg"
     },
     {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\CEO.jpg",
+      "PackagePath": "staticwebassets\\Images\\CEO.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\CEO2.jpg",
+      "PackagePath": "staticwebassets\\Images\\CEO2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\Operations_photo.jpg",
+      "PackagePath": "staticwebassets\\Images\\Operations_photo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\contact_us.png",
+      "PackagePath": "staticwebassets\\Images\\contact_us.png"
+    },
+    {
       "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\data_picture.jpg",
       "PackagePath": "staticwebassets\\Images\\data_picture.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\discover_AI.jpg",
+      "PackagePath": "staticwebassets\\Images\\discover_AI.jpg"
     },
     {
       "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\gjensidige-logo.png",
@@ -35,6 +55,22 @@
     {
       "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\icons\\step_two.png",
       "PackagePath": "staticwebassets\\Images\\icons\\step_two.png"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\people_in_business.jpg",
+      "PackagePath": "staticwebassets\\Images\\people_in_business.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\stars.png",
+      "PackagePath": "staticwebassets\\Images\\stars.png"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\sustainability.jpg",
+      "PackagePath": "staticwebassets\\Images\\sustainability.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\trustpilot_logo.webp",
+      "PackagePath": "staticwebassets\\Images\\trustpilot_logo.webp"
     },
     {
       "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\app.css",

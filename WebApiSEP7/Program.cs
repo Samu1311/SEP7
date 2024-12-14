@@ -1,10 +1,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using WebApiSEP7.Data;
-using WebApiSEP7.Models; // Ensure this is the correct namespace for your DbContext
+using WebApiSEP7.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,8 +35,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
-
 // Allow larger file uploads (optional, for image uploads)
 builder.Services.Configure<FormOptions>(options =>
 {
@@ -53,7 +56,10 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Enable Swagger for API documentation
+// Register IHttpClientFactory
+builder.Services.AddHttpClient();
+
+// Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -69,18 +75,11 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = string.Empty; // Swagger available at root URL
     });
 }
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
-}
-
-// Middleware pipeline
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+
 app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();

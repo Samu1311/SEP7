@@ -1,0 +1,360 @@
+/* Hero Section */
+.hero-section {
+    background-color: #090c33;
+    color: white;
+    padding: 4rem 2rem;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensures vertical alignment of text and image */
+    max-width: 1100px; /* Reduce max-width for better alignment */
+    margin: 0 auto; /* Centers the content */
+    gap: 2rem; /* Space between the text and image */
+    padding: 0 2rem; /* Adds padding to bring content inside the container */
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+
+.hero-image img {
+    max-width: 500%; /* Increase this percentage to make the image bigger */
+    height: auto; /* Maintain the aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-right: 2rem; /* Add some spacing to keep it aligned properly */
+}
+
+
+
+
+/* Section Styling */
+.history-section, 
+.mission-vision-section, 
+.technologies-section, 
+.sustainability-section, 
+.founders-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.history-section h2, 
+.mission-vision-section h2, 
+.technologies-section h2, 
+.sustainability-section h2, 
+.founders-section h2 {
+    font-size: 2rem;
+    color: #090c33;
+    margin-bottom: 1.5rem;
+}
+
+.history-section p, 
+.mission-vision-section p, 
+.sustainability-section p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Operations Section */
+.operations-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    background-color: white; /* Ensure white background for the section */
+    gap: 2rem;
+}
+
+.operations-image {
+    flex: 1;
+    text-align: right; /* Ensure image stays on the right */
+}
+
+.operations-image img {
+    max-width: 90%; /* Adjust image size to fit nicely */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.operations-text {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column; /* Stacks text and buttons vertically */
+    justify-content: center; /* Centers text and buttons vertically */
+    text-align: left; /* Aligns text and buttons to the left */
+    gap: 1.5rem; /* Adds space between text and buttons */
+}
+
+/* Buttons */
+.operations-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap on smaller screens */
+    gap: 1rem; /* Adds space between buttons */
+}
+
+.btn-outline {
+    background-color: #7554f6; /* Cornflower Blue */
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-outline:hover {
+    background-color: #5c3edf;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(92, 62, 223, 0.4);
+}
+
+
+/* Technologies Section */
+.technologies-section {
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.technologies-section h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #090c33;
+    margin-bottom: 2rem;
+}
+
+/* Process Steps */
+.process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    width: 250px;
+    height: 250px;
+    perspective: 1000px; /* Allows 3D rotation */
+    position: relative;
+    border-radius: 20px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s ease;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Rotate on hover */
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #090c33;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-color: #eef6ff;
+}
+
+.card-front h4,
+.card-back h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.card-front p,
+.card-back p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+
+
+
+/* Sustainability Section */
+.sustainability-section {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #f9f9f9; /* Subtle light gray background */
+    border-radius: 10px;
+    margin: 2rem auto; /* Center the section vertically */
+    max-width: 1200px; /* Keep the section aligned with other sections */
+}
+
+.sustainability-section h2 {
+    font-size: 2.2rem;
+    color: #090c33; /* Dark blue for the title */
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.sustainability-content {
+    display: flex;
+    flex-direction: row; /* Place image and text side by side */
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; /* Add space between image and text */
+}
+
+.sustainability-content img {
+    width: 30%; /* Reduce the size of the image */
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+.sustainability-content p {
+    font-size: 1.1rem;
+    color: #333; /* Neutral text color */
+    max-width: 600px; /* Limit text width for readability */
+    line-height: 1.6;
+    text-align: left; /* Align text to the left */
+}
+
+
+
+
+
+
+
+/* Founders Section */
+.founders {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.founder-card {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.founder-image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.founder-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.founder-title {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+/* Fun Facts Section */
+.fun-fact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.fun-fact-section h2 {
+    font-size: 1.8rem;
+    color: #003063;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.fun-fact-card {
+    background-color: #f9f9f9; /* Light background for the card */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    max-width: 600px; /* Set a max width for the card */
+    text-align: center; /* Center the text inside the card */
+}
+
+.fun-fact-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin: 0;
+    font-style: italic;
+}
+
+
+
+
+/* Footer */
+.footer {
+    background-color: #0f1235; /* Haiti */
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 5px solid #7554f6; /* Cornflower Blue */
+}
+
+.footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    gap: 2rem;
+    margin: 1rem 0 0;
+}
+
+.footer ul li a {
+    color: #f9ffd7; /* Hampton */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+    color: #7554f6; /* Cornflower Blue */
+}

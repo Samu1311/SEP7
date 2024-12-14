@@ -1,0 +1,33 @@
+@page "/predict"
+@inject PredictionService PredictionService
+
+<h3>Prediction</h3>
+
+<div>
+    <label>Feature 1:</label>
+    <input type="number" @bind="feature1" />
+</div>
+<div>
+    <label>Feature 2:</label>
+    <input type="number" @bind="feature2" />
+</div>
+<!-- Add more features as needed -->
+
+<button @onclick="GetPrediction">Get Prediction</button>
+
+@if (prediction != null)
+{
+    <p>Prediction: @string.Join(", ", prediction)</p>
+}
+
+@code {
+    private double feature1;
+    private double feature2;
+    private double[] prediction;
+
+    private async Task GetPrediction()
+    {
+        var features = new double[] { feature1, feature2 /* Add more features as needed */ };
+        prediction = await PredictionService.GetPredictionAsync(features);
+    }
+}

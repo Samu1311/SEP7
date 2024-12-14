@@ -10,59 +10,84 @@
     <div class="edit-medical-data-container">    
     <div class="info-box-medical-box">
         <div class="profile-card">
-            <h2 class="section-title">Personal Information</h2>
-            
-            <div class="form-group">
-                <label for="Pregnancy">Are you currently pregnant?</label>
-                <select id="pregnancy" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
+            <EditForm Model="@personalInformation" OnValidSubmit="@SavePersonalInformation">
+                <DataAnnotationsValidator />
+                <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
 
-            <div class="form-group">
-                <label for="Weight">Weight (kg)</label>
-                <input type="number" id="weight" class="form-control" placeholder="Enter your weight" min="0">
-            </div>
+                <div class="form-group">
+                    <label for="Pregnancy">Are you currently pregnant?</label>
+                    <InputSelect id="pregnancy" class="form-control" @bind-Value="personalInformation.IsPregnant">
+                        <option value="">Select an option</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </InputSelect>
+                </div>
 
-            <div class="form-group">
-                <label for="Height">Height (cm)</label>
-                <input type="number" id="height" class="form-control" placeholder="Enter your height" min="0">
-            </div>
+                <div class="form-group">
+                    <label for="Weight">Weight (kg)</label>
+                    <InputNumber id="weight" class="form-control" placeholder="Enter your weight" min="0" @bind-Value="personalInformation.Weight" />
+                </div>
 
-            <hr />
+                <div class="form-group">
+                    <label for="Height">Height (cm)</label>
+                    <InputNumber id="height" class="form-control" placeholder="Enter your height" min="0" @bind-Value="personalInformation.Height" />
+                </div>
 
-            <h2 class="section-title">Lifestyle Habits</h2>
+                <hr />
 
-            <div class="form-group">
-                <label for="Smoking">Do you smoke?</label>
-                <select id="smoking" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
+                <h2 class="section-title">Lifestyle Habits</h2>
 
-            <div class="form-group">
-                <label for="Alcohol">Do you consume alcohol?</label>
-                <select id="alcohol" class="form-control">
-                    <option value="">Select an option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="Smoking">Do you smoke?</label>
+                    <InputSelect id="smoking" class="form-control" @bind-Value="personalInformation.Smokes">
+                        <option value="">Select an option</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </InputSelect>
+                </div>
 
-            <button type="button" class="btn btn-primary save-btn" @onclick="NavigateToForm" >Save Your Personal Data</button>
+                <div class="form-group">
+                    <label for="Alcohol">Do you consume alcohol?</label>
+                    <InputSelect id="alcohol" class="form-control" @bind-Value="personalInformation.ConsumesAlcohol">
+                        <option value="">Select an option</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </InputSelect>
+                </div>
+
+                <button type="submit" class="btn btn-primary save-btn">Save Your Personal Data</button>
+            </EditForm>
         </div>
     </div>
 </div>
 </section>
 
 @code {
-    private void NavigateToForm()
+    private PersonalInformation personalInformation = new PersonalInformation();
+
+    private async Task SavePersonalInformation()
     {
-        NavigationManager.NavigateTo("/AIform#survey-section");
+        var httpClient = HttpClientFactory.CreateClient();
+        var response = await httpClient.PostAsJsonAsync("api/UserInformation/PersonalInformation", personalInformation);
+        if (response.IsSuccessStatusCode)
+        {
+            // Handle success (e.g., show a success message or navigate to another page)
+            NavigationManager.NavigateTo("/AIform#survey-section");
+        }
+        else
+        {
+            // Handle error (e.g., show an error message)
+        }
     }
 
+    public class PersonalInformation
+    {
+        public int PersonalInformationId { get; set; }
+        public int UserId { get; set; }
+        public bool IsPregnant { get; set; }
+        public float Weight { get; set; }
+        public float Height { get; set; }
+        public bool Smokes { get; set; }
+        public bool ConsumesAlcohol { get; set; }
+    }
 }

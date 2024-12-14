@@ -27,7 +27,7 @@ namespace SEP7.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var user = await _context.Users.Include(u => u.HealthcareInformation).SingleOrDefaultAsync(u => u.Email == request.Email);
+            var user = await _context.Users.Include(u => u.MedicalInformation).SingleOrDefaultAsync(u => u.Email == request.Email);
             if (user == null || !VerifyPassword(request.Password, user.PasswordHash))
             {
                 return Unauthorized(new { Message = "Invalid email or password." });

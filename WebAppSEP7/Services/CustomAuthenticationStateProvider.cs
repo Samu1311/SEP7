@@ -3,6 +3,7 @@ using Blazored.LocalStorage;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System;
 
 public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 {
@@ -36,16 +37,16 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         }
     }
 
-    public void NotifyUserLogout()
-    {
-        var authState = Task.FromResult(_anonymous);
-        NotifyAuthenticationStateChanged(authState);
-    }
-
-    public void NotifyUserAuthentication(string token)
+    public void MarkUserAsAuthenticated(string token)
     {
         var user = CreateClaimsPrincipalFromToken(token);
         var authState = Task.FromResult(new AuthenticationState(user));
+        NotifyAuthenticationStateChanged(authState);
+    }
+
+    public void MarkUserAsLoggedOut()
+    {
+        var authState = Task.FromResult(_anonymous);
         NotifyAuthenticationStateChanged(authState);
     }
 

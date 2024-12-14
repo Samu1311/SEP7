@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: #090c33; /* Dark background for contrast */
+    color: #ffffff;
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    gap: 2rem;
+    width: 100%;
+}
+
+.hero-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-text h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact Layout */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 2rem; /* Space between columns */
+    padding: 3rem 7rem;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column; /* Stack contact info and map vertically */
+    gap: 2rem; /* Space between contact info and map */
+}
+
+.contact-details {
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-details h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #090c33;
+    margin-bottom: 1rem;
+}
+
+.contact-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-details ul li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.contact-details ul li strong {
+    color: #090c33;
+}
+
+.map iframe {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%; /* Make the map take the full width of the column */
+    height: 300px; /* Adjust height to balance layout */
+}
+
+/* Right Column */
+.right-column {
+    display: flex;
+    justify-content: center; /* Center the form card horizontally */
+    align-items: flex-start;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    max-width: 500px; /* Set a maximum width for the form */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card .title {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Form Styling */
+.form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form .group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form .group input,
+.form .group textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    outline: 0;
+    width: 100%;
+    background-color: transparent;
+}
+
+.form .group input:placeholder-shown+ label, .form .group textarea:placeholder-shown +label {
+    top: 10px;
+    background-color: transparent;
+  }
+
+  .form .group input:focus,
+  .form .group textarea:focus {
+    border-color: #7554f6;
+  }
+  
+  .form .group input:focus+ label, .form .group textarea:focus +label {
+    top: -10px;
+    left: 10px;
+    background-color: #fff;
+    color: #7554f6;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .form .group textarea {
+    resize: none;
+    height: 100px;
+  }
+
+.form .group label {
+    font-size: 14px;
+    color: #333;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+    transition: all 0.3s;
+}
+
+.form button {
+    background-color: #7554f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form button:hover {
+    background-color: #27408b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-layout {
+        grid-template-columns: 1fr; /* Stack columns vertically on small screens */
+    }
+
+    .map iframe {
+        height: 200px;
+    }
+}

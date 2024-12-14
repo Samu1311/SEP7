@@ -17,9 +17,27 @@
 
 <div class="hero-section">
     <div class="hero-content">
-        <h1>Welcome to Gjensidige Personalized Insurance</h1>
-        <p>Take control of your health with tailored insurance packages based on advanced AI analysis.</p>
-        <button class="cta-button" @onclick="NavigateToLogin">Get Started</button>
+        <div class="hero-image">
+            <img src="Images/discover_AI.jpg" alt="Discover AI Image">
+        </div>
+        <div class="hero-text">
+            <h1>Discover our New AI Solution!</h1>
+            <h2>Save money by using our tailored solution just for you. </h2>
+            <button class="cta-button" @onclick="NavigateToSurvey">Learn More</button>
+        </div>
+    </div>
+</div>
+
+<div class="review-section">
+    <div class="review-content">
+        <span class="rating">4.5 out of 5</span>
+        <div class="stars"><a href=https://dk.trustpilot.com/review/www.gjensidige.dk>
+            <img src="Images/stars.png" alt="Stars"></a>
+        </div>
+        <span class="review-text">Based on <strong>18,188 reviews</strong></span>
+        <div class="trustpilot-logo"><a href=https://dk.trustpilot.com/review/www.gjensidige.dk>
+            <img src="Images/trustpilot_logo.webp" alt="Trustpilot Logo"></a>
+        </div>
     </div>
 </div>
 
@@ -38,17 +56,25 @@
     </div>
 </div>
 
+<div class="your-benefits">
+    <div class="benefits-section">
+        <h2>Your benefits</h2>
+        <p>There are many advantages to becoming a customer with us. 
+            You get discounts at private hospitals, access to an online doctor, and many more advantages. </p>
+        </div>
+</div>
+
 <div class="survey-section">
     <h2>Start Your Health Journey</h2>
-    <p>Fill out a quick survey and upload your medical records to get your personalized insurance plan.</p>
-    <button class="cta-button" @onclick="NavigateToSurvey">Start Now</button>
+    <p>Start your journey by signing up on our website.</p>
+    <button class="cta-button" @onclick="NavigateToLogin">Sign Up!</button>
 </div>
 
 <footer class="footer">
     <p>© 2024 Gjensidige. All rights reserved.</p>
     <ul>
-        <li><a href="/AIdescription">Terms of Service</a></li>
-        <li><a href="/HealthData">Privacy Policy</a></li>
+        <li><a href="/terms-of-service">Terms of Service</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
         <li><a href="/contact-us">Contact Us</a></li>
     </ul>
 </footer>
@@ -81,17 +107,17 @@
 
     private async void OnAuthenticationStateChanged(Task<AuthenticationState> task)
     {
-            await UpdateUserName();
+        await UpdateUserName();
     }
 
     private void NavigateToLogin()
     {
-        NavigationManager.NavigateTo("/login");
+        NavigationManager.NavigateTo("/signup");
     }
 
     private void NavigateToSurvey()
     {
-        NavigationManager.NavigateTo("/recommendation");
+        NavigationManager.NavigateTo("/AIdescription");
     }
 
     public void Dispose()
