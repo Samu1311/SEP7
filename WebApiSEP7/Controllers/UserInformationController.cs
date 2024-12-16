@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -207,6 +208,44 @@ namespace WebApiSEP7.Controllers
             }
             return StatusCode((int)response.StatusCode, response.ReasonPhrase);
         }
+        
+        [HttpPost("Predict")]
+        public async Task<IActionResult> Predict([FromBody] MedicalInformationDto dto)
+        {
+            var user = await _context.Users.FindAsync(dto.UserId);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            dto.Gender = user.Gender == "Male" ? 1 : 0; // Assuming 1 for Male and 0 for Female
+            dto.Age = CalculateAge(user.DateOfBirth);
+
+            var diabetesFeatures = dto.ToDiabetesFeaturesArray();
+            var heartFeatures = dto.ToHeartFeaturesArray((int)dto.Age, dto.Gender);
+
+            var httpClient = _httpClientFactory.CreateClient();
+
+            var diabetesResponse = await httpClient.PostAsJsonAsync("http://localhost:5000/predict_diabetes", new { features = diabetesFeatures });
+            var heartResponse = await httpClient.PostAsJsonAsync("http://localhost:5000/predict_heart", new { features = heartFeatures });
+
+            if (diabetesResponse.IsSuccessStatusCode && heartResponse.IsSuccessStatusCode)
+            {
+                var diabetesPrediction = await diabetesResponse.Content.ReadFromJsonAsync<PredictionResult>();
+                var heartPrediction = await heartResponse.Content.ReadFromJsonAsync<PredictionResult>();
+
+                var combinedResult = new CombinedPredictionResult
+                {
+                    DiabetesPrediction = diabetesPrediction,
+                    HeartPrediction = heartPrediction
+                };
+
+                return Ok(combinedResult);
+            }
+
+            return StatusCode((int)diabetesResponse.StatusCode, diabetesResponse.ReasonPhrase);
+        }
+
 
         private bool MedicalInformationExists(int id)
         {
@@ -217,6 +256,23 @@ namespace WebApiSEP7.Controllers
         {
             return _context.PersonalInformations.Any(e => e.PersonalInformationId == id);
         }
+
+            public class UserProfile
+        {
+            public PersonalInformation? PersonalInformation { get; set; }
+            public MedicalInformation? MedicalInformation { get; set; }
+        }
+
+            public class UserIdDto
+        {
+            public int UserId { get; set; }
+        }
+
+    public class CombinedPredictionResult
+    {
+        public PredictionResult DiabetesPrediction { get; set; }
+        public PredictionResult HeartPrediction { get; set; }
+    }
 
         private MedicalInformation ParseDtoToMedicalInformation(MedicalInformationDto dto)
         {
@@ -320,6 +376,6 @@ namespace WebApiSEP7.Controllers
 
     public class PredictionResult
     {
-        public int[][] Prediction { get; set; }
+        public int[][]? Prediction { get; set; }
     }
 }

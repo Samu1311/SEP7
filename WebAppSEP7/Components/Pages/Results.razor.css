@@ -1,0 +1,266 @@
+/* General Page Layout */
+.recommendation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f9ffd7; /* Hampton */
+    color: #0f1235; /* Haiti */
+    text-align: center;
+}
+
+/* Page Titles and Subtitles */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #7554f6; /* Cornflower Blue */
+    margin-bottom: 15px;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #0f1235; /* Haiti */
+}
+
+/* Buttons */
+.btn {
+    background-color: #7554f6; /* Cornflower Blue */
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+.btn:disabled {
+    background-color: #c4c4c4;
+    cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+    background-color: #5c3edf;
+    box-shadow: 0 4px 10px rgba(92, 62, 223, 0.4);
+    transform: translateY(-3px);
+}
+
+.modern-btn-secondary {
+    background-color: #f4f4f4;
+    color: #0f1235;
+    border: 2px solid #7554f6; /* Cornflower Blue */
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.modern-btn-secondary:hover {
+    background-color: #e4e4e4;
+    color: #0f1235;
+}
+
+/* Loading Animation */
+.loading {
+    margin: 20px 0;
+}
+
+.loading svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.loading svg polyline {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.loading svg polyline#back {
+    stroke: #ff4d5033; /* Light Red */
+}
+
+.loading svg polyline#front {
+    stroke: #ff4d4f; /* Red Stroke */
+    stroke-dasharray: 48, 144;
+    stroke-dashoffset: 192;
+    animation: dash_682 2.5s linear infinite;
+}
+
+@keyframes dash_682 {
+    72.5% {
+        opacity: 0;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Analysis Result Container */
+.analysis-result {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 20px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.analysis-result:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title Styling */
+.analysis-title {
+    font-size: 1.8rem;
+    color: #7554f6; /* Cornflower Blue */
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+/* Result Details */
+.analysis-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.result-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    color: #333333;
+    background-color: #f9ffd7; /* Light Hampton background */
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.result-item i {
+    color: #7554f6; /* Cornflower Blue */
+    font-size: 1.5rem;
+}
+
+.result-label {
+    font-weight: bold;
+    color: #0f1235; /* Haiti */
+}
+
+.result-value {
+    color: #333333;
+    font-weight: normal;
+}
+
+/* Package Selection Dropdown */
+.package-selection {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.package-selection label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #0f1235;
+}
+
+.package-selection select {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 2px solid #7554f6; /* Cornflower Blue */
+    font-size: 1rem;
+    color: #0f1235;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.package-selection select:focus {
+    border-color: #5c3edf;
+    box-shadow: 0 0 8px rgba(92, 62, 223, 0.4);
+}
+
+/* Package Table */
+.package-container {
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 900px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.package-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #7554f6;
+    margin-bottom: 20px;
+}
+
+.package-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.package-table th {
+    background-color: #0f1235; /* Haiti */
+    color: #ffffff;
+    padding: 15px;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.package-table td {
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: #333333;
+    border-bottom: 1px solid #dddddd;
+}
+
+.package-table tr:hover {
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .recommendation-container {
+        padding: 10px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .package-table th,
+    .package-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .package-title {
+        font-size: 1.5rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 8px 15px;
+    }
+}

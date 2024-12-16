@@ -1,0 +1,189 @@
+@page "/results"
+@inject NavigationManager NavigationManager
+@inject IHttpClientFactory HttpClientFactory
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject CustomAuthenticationStateProvider AuthProvider
+
+<div class="recommendation-container">
+    <h2 class="page-title">Get Your Personalized Recommendation</h2>
+    <p class="page-subtitle">Based on your data, our AI will generate a personalized insurance recommendation for you.</p>
+
+    <button class="btn modern-btn" @onclick="GetRecommendation" disabled="@isLoading">
+        Get Recommendation
+    </button>
+
+    <div class="loading" style="display: @(isLoading ? "block" : "none")">
+        <svg width="64px" height="48px">
+            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="back"></polyline>
+            <polyline points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24" id="front"></polyline>
+        </svg>
+    </div>
+
+    <div class="recommendation-result" style="display: @(showResult ? "block" : "none")">
+        <h3>Your Recommendation:</h3>
+        <p>@recommendation</p>
+        <button class="btn modern-btn-secondary" @onclick="ResetPage">Start Over</button>
+    </div>
+
+    <div class="analysis-result" style="display: @(showAnalysisResult ? "block" : "none")">
+        <h3 class="analysis-title"><i class="fas fa-chart-pie"></i> Analysis Results</h3>
+        <div class="analysis-details">
+            <div class="result-item">
+                <i class="fas fa-tint"></i>
+                <span class="result-label">Diabetes:</span>
+                <span class="result-value">@diabetesResult</span>
+            </div>
+            <div class="result-item">
+                <i class="fas fa-heartbeat"></i>
+                <span class="result-label">Heart Condition:</span>
+                <span class="result-value">@heartConditionResult</span>
+            </div>
+        </div>
+        <button class="btn modern-btn-primary" @onclick="GeneratePackage">
+            <i class="fas fa-cogs"></i> Generate Package Based on Analysis
+        </button>
+    </div>
+
+
+    <div class="premium-package" style="display: @(showPremiumPackage ? "block" : "none")">
+        <h3>Premium Package:</h3>
+    </div>
+
+    @if (showAnalysisResult)
+    {
+        <div class="package-selection">
+            <label for="packageDropdown">Select a Package:</label>
+            <select id="packageDropdown" @onchange="OnPackageChange">
+                <option value="Basic">Basic</option>
+                <option value="Heart">Heart</option>
+                <option value="Diabetes">Diabetes</option>
+                <option value="Premium">Premium</option>
+            </select>
+        </div>
+
+        <div class="package-container">
+            @if (selectedPackage == "Basic")
+            {
+                <h2 class="package-title">Basic Package</h2>
+                @RenderTable("Basic", new[] { "General Practitioner Consultations", "Online Doctor Services", "Preventive Advice Line", "Physiotherapy and Chiropractic", "Access to Private Hospitals" })
+            }
+            else if (selectedPackage == "Heart")
+            {
+                <h2 class="package-title">Heart Package</h2>
+                @RenderTable("Heart", new[] { "Cardiovascular Surgery", "Cardiac Second Opinions", "Dietician Consultations for Heart Health", "Heart Rehabilitation", "Cardiac Diagnostic Imaging" })
+            }
+            else if (selectedPackage == "Diabetes")
+            {
+                <h2 class="package-title">Diabetes Package</h2>
+                @RenderTable("Diabetes", new[] { "Endocrinology Specialist Consultations", "Glucose Monitoring and Support", "Dietician Consultations for Diabetes", "Diabetes Testing Supplies", "Physiotherapy for Diabetes Complications" })
+            }
+            else if (selectedPackage == "Premium")
+            {
+                <h2 class="package-title">Premium Package</h2>
+                @RenderTable("Premium", new[] { "All Services from Basic, Heart, and Diabetes Packages" })
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private bool isLoading = false;
+    private bool showResult = false;
+    private bool showAnalysisResult = false;
+    private bool showPremiumPackage = false;
+    private string recommendation;
+    private string diabetesResult;
+    private string heartConditionResult;
+    private string selectedPackage = "Premium"; // Default selection
+
+    private async Task GetRecommendation()
+    {
+        isLoading = true;
+        showResult = false;
+        showAnalysisResult = false;
+        showPremiumPackage = false;
+
+        var client = HttpClientFactory.CreateClient("SEP7API");
+
+        // Get the session token
+        var token = await LocalStorage.GetItemAsync<string>("authToken");
+
+        // Get the user ID
+        var userId = await AuthProvider.GetUserIdAsync();
+
+        // Fetch the user's medical information and get predictions
+        var predictionRequest = new HttpRequestMessage(HttpMethod.Post, "userinformation/predict");
+        predictionRequest.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        predictionRequest.Content = JsonContent.Create(new UserIdDto { UserId = userId });
+        var predictionResponse = await client.SendAsync(predictionRequest);
+
+        if (predictionResponse.IsSuccessStatusCode)
+        {
+            var combinedResult = await predictionResponse.Content.ReadFromJsonAsync<CombinedPredictionResult>();
+            diabetesResult = combinedResult.DiabetesPrediction.Prediction[0][0] == 1 ? "Positive" : "Negative";
+            heartConditionResult = combinedResult.HeartPrediction.Prediction[0][0] == 1 ? "Positive" : "Negative";
+            showAnalysisResult = true;
+        }
+        else
+        {
+            recommendation = "Failed to get analysis results.";
+            showResult = true;
+        }
+
+        isLoading = false;
+    }
+
+    private void ResetPage()
+    {
+        showResult = false;
+        showAnalysisResult = false;
+        showPremiumPackage = false;
+        recommendation = string.Empty;
+        diabetesResult = string.Empty;
+        heartConditionResult = string.Empty;
+    }
+
+    private void GeneratePackage()
+    {
+        showPremiumPackage = true;
+    }
+
+    private void OnPackageChange(ChangeEventArgs e)
+    {
+        selectedPackage = e.Value.ToString();
+    }
+
+    RenderFragment RenderTable(string packageName, string[] services) => @<table class="package-table">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var service in services)
+            {
+                <tr>
+                    <td>@service</td>
+                    <td>Comprehensive @packageName service for your health needs.</td>
+                </tr>
+            }
+        </tbody>
+    </table>;
+
+    public class UserIdDto
+    {
+        public int UserId { get; set; }
+    }
+
+    public class CombinedPredictionResult
+    {
+        public PredictionResult DiabetesPrediction { get; set; }
+        public PredictionResult HeartPrediction { get; set; }
+    }
+
+    public class PredictionResult
+    {
+        public int[][] Prediction { get; set; }
+    }
+}

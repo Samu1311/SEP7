@@ -64,4 +64,21 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         var identity = new ClaimsIdentity(jwtToken.Claims, "jwt");
         return new ClaimsPrincipal(identity);
     }
+
+    public async Task<int> GetUserIdAsync()
+    {
+        var authState = await GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity.IsAuthenticated)
+        {
+            var userIdClaim = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
+            {
+                return userId;
+            }
+        }
+
+        return 0; // or throw an exception if user ID is required
+    }
 }

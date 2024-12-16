@@ -228,8 +228,8 @@ C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0
 C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0\scopedcss\Components\Pages\SignUp.razor.rz.scp.css
 C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0\scopedcss\Components\Pages\LogIn.razor.rz.scp.css
 C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\bin\Debug\net8.0\Blazored.LocalStorage.dll
-C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0\scopedcss\Components\Pages\Recommendation.razor.rz.scp.css
 C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0\scopedcss\Components\Pages\PersonalQuestions.razor.rz.scp.css
 C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0\scopedcss\Components\Pages\AboutUs.razor.rz.scp.css
 C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0\scopedcss\Components\Pages\Index.razor.rz.scp.css
 C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0\scopedcss\Components\Pages\Contact.razor.rz.scp.css
+C:\Users\Samuele Biondi\Desktop\SEP7 - Code\SEP7.net\WebAppSEP7\obj\Debug\net8.0\scopedcss\Components\Pages\Results.razor.rz.scp.css
