@@ -87,22 +87,6 @@ The project follows a clean, modular structure:
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Follow these steps:
-
-1. Fork the repository.
-2. Create a new feature branch.
-3. Commit and push your changes.
-4. Create a pull request with a clear explanation.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
-
----
 
 ## 🙌 Acknowledgements
 
@@ -116,7 +100,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 For questions or support, feel free to reach out:
 
 **Samuele Biondi**  
-- 📧 Email: [samuele@test.com](mailto:samuele@test.com)  
+- 📧 Email: [samuele13112002@gmail.com](mailto:samuele13112002@gmail.com)  
 - 🌐 GitHub: [Samu1311](https://github.com/Samu1311)  
 
 ---
@@ -190,7 +174,7 @@ For smooth operation, ensure you **start each component in this order**:
 1. **Start the ML API** to process user data through the AI model.
 2. **Launch the backend** to handle user authentication and database interactions.
 3. **Run the frontend** for the user interface.
-4. Access the application at `http://localhost:5000`.
+4. Access the application at `http://localhost:5075`, or the one showing on your machine's console
 
 ---
 
