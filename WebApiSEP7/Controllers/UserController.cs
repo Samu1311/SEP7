@@ -126,6 +126,30 @@ namespace SEP7.Controllers
             return Ok(new { Message = "User deleted successfully" });
         }
 
+        // GET: api/user/profile/{userId}
+        [HttpGet("profile/{userId}")]
+        public async Task<IActionResult> GetUserProfile(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+
+            if (user == null)
+            {
+                return NotFound(new { Message = "User not found." });
+            }
+
+            var userProfile = new UserProfileResponse
+            {
+                Name = $"{user.FirstName} {user.LastName}",
+                Email = user.Email,
+                Phone = user.PhoneNumber,
+                DateOfBirth = user.DateOfBirth, // Include date of birth
+                Gender = user.Gender // Include gender
+            };
+
+            return Ok(userProfile);
+        }
+
+
         private string HashPassword(string password)
         {
             using (var sha256 = SHA256.Create())
@@ -134,5 +158,15 @@ namespace SEP7.Controllers
                 return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
             }
         }
+
+        public class UserProfileResponse
+        {
+            public string Name { get; set; }
+            public string Email { get; set; }
+            public string Phone { get; set; }
+            public DateTime? DateOfBirth { get; set; } // New field for date of birth
+            public string Gender { get; set; } // New field for gender
+        }
+
     }
 }

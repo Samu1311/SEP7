@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using WebApiSEP7.Data;
 using WebApiSEP7.Models;
@@ -46,53 +47,33 @@ namespace WebApiSEP7.Controllers
             return CreatedAtAction(nameof(GetService), new { id = service.ServiceId }, service);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutService(int id, Service service)
+        [HttpPost("GetServicesByAnalysis")]
+        public async Task<ActionResult<IEnumerable<Service>>> GetServicesByAnalysis([FromBody] AnalysisResultDto analysisResult)
         {
-            if (id != service.ServiceId)
+            var services = new List<Service>();
+
+            if (analysisResult.DiabetesResult == "Positive")
             {
-                return BadRequest();
+                services.AddRange(await _context.Services.Where(s => s.Category.CategoryName == "Diabetes").ToListAsync());
             }
 
-            _context.Entry(service).State = EntityState.Modified;
-
-            try
+            if (analysisResult.HeartConditionResult == "Positive")
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ServiceExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                services.AddRange(await _context.Services.Where(s => s.Category.CategoryName == "Heart").ToListAsync());
             }
 
-            return NoContent();
+            if (analysisResult.DiabetesResult == "Negative" && analysisResult.HeartConditionResult == "Negative")
+            {
+                services.AddRange(await _context.Services.Where(s => s.Category.CategoryName == "Basic").ToListAsync());
+            }
+
+            return Ok(services);
         }
+    }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteService(int id)
-        {
-            var service = await _context.Services.FindAsync(id);
-            if (service == null)
-            {
-                return NotFound();
-            }
-
-            _context.Services.Remove(service);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool ServiceExists(int id)
-        {
-            return _context.Services.Any(e => e.ServiceId == id);
-        }
+    public class AnalysisResultDto
+    {
+        public string DiabetesResult { get; set; }
+        public string HeartConditionResult { get; set; }
     }
 }

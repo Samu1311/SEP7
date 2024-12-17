@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\Images\\contact_us.png"
     },
     {
+      "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\customer_people.jpg",
+      "PackagePath": "staticwebassets\\Images\\customer_people.jpg"
+    },
+    {
       "Id": "C:\\Users\\Samuele Biondi\\Desktop\\SEP7 - Code\\SEP7.net\\WebAppSEP7\\wwwroot\\Images\\data_picture.jpg",
       "PackagePath": "staticwebassets\\Images\\data_picture.jpg"
     },

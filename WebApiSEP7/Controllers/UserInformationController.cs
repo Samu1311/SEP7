@@ -296,9 +296,6 @@ namespace WebApiSEP7.Controllers
                 ChestPainType = dto.ChestPainType,
                 STSlope = dto.STSlope,
                 RestingECG = dto.RestingECG,
-                RestingECG_LVH = dto.RestingECG_LVH,
-                RestingECG_Normal = dto.RestingECG_Normal,
-                RestingECG_ST = dto.RestingECG_ST
             };
         }
 

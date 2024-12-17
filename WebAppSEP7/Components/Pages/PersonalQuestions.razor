@@ -68,7 +68,7 @@
     private async Task SavePersonalInformation()
     {
         var httpClient = HttpClientFactory.CreateClient();
-        var response = await httpClient.PostAsJsonAsync("api/UserInformation/PersonalInformation", personalInformation);
+        var response = await httpClient.PostAsJsonAsync("UserInformation/PersonalInformation", personalInformation);
         if (response.IsSuccessStatusCode)
         {
             // Handle success (e.g., show a success message or navigate to another page)

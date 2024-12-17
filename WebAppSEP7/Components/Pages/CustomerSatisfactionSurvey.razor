@@ -1,0 +1,142 @@
+@page "/customer-satisfaction-survey"
+@using System.ComponentModel.DataAnnotations
+@using System.Security.Claims
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager Navigation
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Customer Satisfaction Survey - AI Model</h1>
+            <p>
+                Welcome to Gjensidige's Customer Satisfaction Survey. Our goal is to gather your valuable feedback on how satisfied you are with our personalized insurance package recommendations. This information will enable us to enhance our AI model, improve customer experience, and deliver tailored solutions that better meet your needs. 
+                Your responses will remain confidential, and it will only take a few minutes to complete the survey.
+            </p>
+        </div>
+        <div class="hero-image">
+            <img src="/Images/customer_people.jpg" alt="Customer Satisfaction Survey">
+        </div>
+    </div>
+</div>
+
+<!-- Survey Form Section -->
+<div class="survey-container">
+    <h1 class="page-title">Customer Satisfaction Survey</h1>
+    <p class="page-description">
+        We value your feedback as it helps us improve and better serve your needs. This survey will take only a few minutes, and your responses will guide us in enhancing our services.
+    </p>
+    <div class="form-box">
+        <div class="form-card">
+            <EditForm Model="@customerSatisfactionModel" OnValidSubmit="@SubmitSurvey">
+                <DataAnnotationsValidator />
+                <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+                <h2 class="section-title">Your Feedback</h2>
+
+                <!-- Satisfaction -->
+                <div class="form-group">
+                    <label for="Satisfaction">How satisfied are you with the personalized insurance package recommendations provided by Gjensidige's AI system? (1-10)</label>
+                    <InputNumber id="Satisfaction" class="form-control" @bind-Value="customerSatisfactionModel.Satisfaction" min="1" max="10" />
+                </div>
+
+                <!-- Usability -->
+                <div class="form-group">
+                    <label for="Usability">How user-friendly did you find the process of selecting a personalized insurance package recommended by AI? (1-10)</label>
+                    <InputNumber id="Usability" class="form-control" @bind-Value="customerSatisfactionModel.Usability" min="1" max="10" />
+                </div>
+
+                <!-- Comfort -->
+                <div class="form-group">
+                    <label for="Comfort">How comfortable do you feel knowing that a trained AI created a personalized insurance package for you based on your needs? (1-10)</label>
+                    <InputNumber id="Comfort" class="form-control" @bind-Value="customerSatisfactionModel.Comfort" min="1" max="10" />
+                </div>
+
+                <!-- Transparency -->
+                <div class="form-group">
+                    <label for="Transparency">How transparent was Gjensidige in explaining how the AI system works to create personalized insurance packages for you? (1-10)</label>
+                    <InputNumber id="Transparency" class="form-control" @bind-Value="customerSatisfactionModel.Transparency" min="1" max="10" />
+                </div>
+
+                <!-- Recommendation -->
+                <div class="form-group">
+                    <label for="Recommendation">On a scale of 1 to 10, how likely are you to recommend Gjensidige to friends, family, or colleagues? (1-10)</label>
+                    <InputNumber id="Recommendation" class="form-control" @bind-Value="customerSatisfactionModel.Recommendation" min="1" max="10" />
+                </div>
+
+                <button type="submit" class="btn btn-primary save-btn">Submit Survey</button>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    private CustomerSatisfactionModel customerSatisfactionModel = new CustomerSatisfactionModel(){
+        Usability = 0,
+        Comfort = 0,
+        Transparency = 0,
+        Satisfaction = 0,
+        Recommendation = 0
+    };
+
+    private int userId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity != null && user.Identity.IsAuthenticated)
+        {
+            var userIdString = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            if (int.TryParse(userIdString, out int parsedUserId))
+            {
+                userId = parsedUserId;
+                customerSatisfactionModel.UserId = userId; // Assign the UserId to the customerSatisfactionModel
+            }
+        }
+    }
+
+
+    private async Task SubmitSurvey()
+    {
+        var client = HttpClientFactory.CreateClient("CustomerAPI");
+        var response = await client.PostAsJsonAsync($"CustomerSatisfaction/save?userId={userId}", customerSatisfactionModel);
+        if (response.IsSuccessStatusCode)
+        {
+            customerSatisfactionModel = await response.Content.ReadFromJsonAsync<CustomerSatisfactionModel>();
+            Console.WriteLine($"Customer Satisfaction data saved with ID: {customerSatisfactionModel.CustomerSatisfactionId}");
+            Navigation.NavigateTo("/profile");
+        }
+        else
+        {
+            Console.WriteLine("Error saving Customer Satisfaction data.");
+        }
+    }
+
+    public class CustomerSatisfactionModel
+    {
+        public int CustomerSatisfactionId { get; set; }
+        
+        [Range(1, 10, ErrorMessage = "Satisfaction must be between 1 and 10.")]
+        public int Satisfaction { get; set; }
+
+        [Range(1, 10, ErrorMessage = "Usability must be between 1 and 10.")]
+        public int Usability { get; set; }
+
+        [Range(1, 10, ErrorMessage = "Comfort must be between 1 and 10.")]
+        public int Comfort { get; set; }
+
+        [Range(1, 10, ErrorMessage = "Transparency must be between 1 and 10.")]
+        public int Transparency { get; set; }
+
+        [Range(1, 10, ErrorMessage = "Recommendation must be between 1 and 10.")]
+        public int Recommendation { get; set; }
+
+        public int Score { get; set; } // Calculated total score
+
+        public int UserId { get; set; }
+    }
+}

@@ -44,7 +44,6 @@
         </button>
     </div>
 
-
     <div class="premium-package" style="display: @(showPremiumPackage ? "block" : "none")">
         <h3>Premium Package:</h3>
     </div>
@@ -58,6 +57,7 @@
                 <option value="Heart">Heart</option>
                 <option value="Diabetes">Diabetes</option>
                 <option value="Premium">Premium</option>
+                <option value="Custom">Custom</option>
             </select>
         </div>
 
@@ -65,25 +65,34 @@
             @if (selectedPackage == "Basic")
             {
                 <h2 class="package-title">Basic Package</h2>
-                @RenderTable("Basic", new[] { "General Practitioner Consultations", "Online Doctor Services", "Preventive Advice Line", "Physiotherapy and Chiropractic", "Access to Private Hospitals" })
+                @RenderTable(basicServices)
             }
             else if (selectedPackage == "Heart")
             {
                 <h2 class="package-title">Heart Package</h2>
-                @RenderTable("Heart", new[] { "Cardiovascular Surgery", "Cardiac Second Opinions", "Dietician Consultations for Heart Health", "Heart Rehabilitation", "Cardiac Diagnostic Imaging" })
+                @RenderTable(heartServices)
             }
             else if (selectedPackage == "Diabetes")
             {
                 <h2 class="package-title">Diabetes Package</h2>
-                @RenderTable("Diabetes", new[] { "Endocrinology Specialist Consultations", "Glucose Monitoring and Support", "Dietician Consultations for Diabetes", "Diabetes Testing Supplies", "Physiotherapy for Diabetes Complications" })
+                @RenderTable(diabetesServices)
             }
             else if (selectedPackage == "Premium")
             {
                 <h2 class="package-title">Premium Package</h2>
-                @RenderTable("Premium", new[] { "All Services from Basic, Heart, and Diabetes Packages" })
+                @RenderTable(premiumServices)
+            }
+            else if (selectedPackage == "Custom")
+            {
+                <h2 class="package-title">Custom Package</h2>
+                @RenderTable(customServices)
             }
         </div>
     }
+
+    <button class="btn modern-btn-primary" @onclick="NavigateToCustomerSatisfaction">
+        Go to Customer Satisfaction
+    </button>
 </div>
 
 @code {
@@ -95,6 +104,12 @@
     private string diabetesResult;
     private string heartConditionResult;
     private string selectedPackage = "Premium"; // Default selection
+
+    private List<Service> basicServices = new List<Service>();
+    private List<Service> heartServices = new List<Service>();
+    private List<Service> diabetesServices = new List<Service>();
+    private List<Service> premiumServices = new List<Service>();
+    private List<Service> customServices = new List<Service>();
 
     private async Task GetRecommendation()
     {
@@ -143,29 +158,53 @@
         heartConditionResult = string.Empty;
     }
 
-    private void GeneratePackage()
+    private async Task GeneratePackage()
     {
-        showPremiumPackage = true;
+        var client = HttpClientFactory.CreateClient("SEP7API");
+
+        var analysisResult = new AnalysisResultDto
+        {
+            DiabetesResult = diabetesResult,
+            HeartConditionResult = heartConditionResult
+        };
+
+        var response = await client.PostAsJsonAsync("services/GetServicesByAnalysis", analysisResult);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var services = await response.Content.ReadFromJsonAsync<List<Service>>();
+            customServices = services;
+            showPremiumPackage = true;
+            StateHasChanged();
+        }
     }
 
-    private void OnPackageChange(ChangeEventArgs e)
+    private async Task OnPackageChange(ChangeEventArgs e)
     {
         selectedPackage = e.Value.ToString();
+        await GeneratePackage();
     }
 
-    RenderFragment RenderTable(string packageName, string[] services) => @<table class="package-table">
+    private void NavigateToCustomerSatisfaction()
+    {
+        NavigationManager.NavigateTo("/customer-satisfaction-survey");
+    }
+
+    RenderFragment RenderTable(List<Service> services) => @<table class="package-table">
         <thead>
             <tr>
                 <th>Service</th>
                 <th>Description</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var service in services)
             {
                 <tr>
-                    <td>@service</td>
-                    <td>Comprehensive @packageName service for your health needs.</td>
+                    <td>@service.ServiceName</td>
+                    <td>@service.Description</td>
+                    <td>@service.Price</td>
                 </tr>
             }
         </tbody>
@@ -185,5 +224,18 @@
     public class PredictionResult
     {
         public int[][] Prediction { get; set; }
+    }
+
+    public class AnalysisResultDto
+    {
+        public string DiabetesResult { get; set; }
+        public string HeartConditionResult { get; set; }
+    }
+
+    public class Service
+    {
+        public string ServiceName { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
     }
 }

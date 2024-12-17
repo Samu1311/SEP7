@@ -1,0 +1,199 @@
+@page "/edit-profile"
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider
+@inject IJSRuntime JSRuntime
+@using System.Security.Claims
+
+<div class="edit-profile-container">
+    <h1 class="page-title">Edit Profile</h1>
+
+    @if (isLoading)
+    {
+        <p class="loading-message">Loading profile...</p>
+    }
+    else if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="error-message">@errorMessage</div>
+    }
+    else
+    {
+        <EditForm Model="@editProfileModel" OnValidSubmit="HandleSubmit" class="profile-form">
+            <Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator />
+            <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <InputText id="name" @bind-Value="editProfileModel.Name" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <InputText id="email" @bind-Value="editProfileModel.Email" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <InputText id="phone" @bind-Value="editProfileModel.Phone" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <InputDate id="dateOfBirth" @bind-Value="editProfileModel.DateOfBirth" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <InputSelect id="gender" @bind-Value="editProfileModel.Gender" class="form-control">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </InputSelect>
+            </div>
+
+            <div class="form-group">
+                <label for="emergencyContact">Emergency Contact</label>
+                <InputText id="emergencyContact" @bind-Value="editProfileModel.EmergencyContact" class="form-control" />
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn save-btn">Save Changes</button>
+                <button type="button" class="btn cancel-btn" @onclick="CancelEdit">Cancel</button>
+            </div>
+        </EditForm>
+    }
+</div>
+
+
+@code {
+    private EditProfileModel editProfileModel = new EditProfileModel();
+    private bool isLoading = true;
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoading = true;
+        await LoadProfileForEditing();
+        isLoading = false;
+    }
+
+    private async Task LoadProfileForEditing()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var userClaims = authState.User;
+
+            if (userClaims.Identity != null && userClaims.Identity.IsAuthenticated)
+            {
+                var userId = userClaims.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+                if (int.TryParse(userId, out int parsedUserId))
+                {
+                    var client = HttpClientFactory.CreateClient("SEP7API");
+                    var response = await client.GetAsync($"user/profile/{parsedUserId}");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var user = await response.Content.ReadFromJsonAsync<User>();
+                        if (user != null)
+                        {
+                            editProfileModel = new EditProfileModel
+                            {
+                                UserId = user.UserId,
+                                Name = user.Name,
+                                Email = user.Email,
+                                Phone = user.Phone,
+                                DateOfBirth = user.DateOfBirth,
+                                Gender = user.Gender,
+                                EmergencyContact = user.EmergencyContact
+                            };
+                        }
+                    }
+                    else
+                    {
+                        errorMessage = "Failed to load profile data.";
+                    }
+                }
+                else
+                {
+                    errorMessage = "Invalid user ID.";
+                }
+            }
+            else
+            {
+                errorMessage = "User not authenticated.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+     private async Task HandleSubmit()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            if (user.Identity == null || !user.Identity.IsAuthenticated)
+            {
+                errorMessage = "User is not authenticated.";
+                return;
+            }
+
+            var client = HttpClientFactory.CreateClient("SEP7API");
+            var response = await client.PutAsJsonAsync($"user/{editProfileModel.UserId}", editProfileModel);
+
+            if (response.IsSuccessStatusCode)
+            {
+                NavigationManager.NavigateTo("/profile");
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                errorMessage = $"Failed to update profile. Please try again. Error: {errorContent}";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    private void CancelEdit()
+    {
+        NavigationManager.NavigateTo("/profile");
+    }
+
+    public class EditProfileModel
+    {
+        public int UserId { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
+        public DateTime? DateOfBirth { get; set; }
+        public string Gender { get; set; } = string.Empty;
+        public string EmergencyContact { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
+        public decimal? Discount { get; set; }
+        public int? SubscriptionId { get; set; }
+    }
+
+    private class User
+    {
+        public int UserId { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string PasswordHash { get; set; }
+    public DateTime? DateOfBirth { get; set; }
+    public string Gender { get; set; }
+    public string EmergencyContact { get; set; }
+    public string Phone { get; set; }
+    public decimal? Discount { get; set; }
+    public int? SubscriptionId { get; set; }
+    }
+}

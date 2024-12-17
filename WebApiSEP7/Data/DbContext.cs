@@ -14,6 +14,7 @@ namespace WebApiSEP7.Data
         public DbSet<User> Users { get; set; }
         public DbSet<MedicalInformation> MedicalInformations { get; set; }
         public DbSet<PersonalInformation> PersonalInformations { get; set; }
+        public DbSet<CustomerSatisfaction> CustomerSatisfactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +37,11 @@ namespace WebApiSEP7.Data
                 .HasOne(u => u.PersonalInformation)
                 .WithOne(pi => pi.User)
                 .HasForeignKey<PersonalInformation>(pi => pi.UserId);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.CustomerSatisfaction)
+                .WithOne(pi => pi.User)
+                .HasForeignKey<CustomerSatisfaction>(pi => pi.UserId);    
         }
     }
 }

@@ -38,9 +38,6 @@ namespace WebApiSEP7.Models // Ensure this is the correct namespace for your mod
 
         // Resting ECG Results (One-Hot Encoded)
         public RestingECG RestingECG { get; set; }
-        public int RestingECG_LVH { get; set; } // Left Ventricular Hypertrophy
-        public int RestingECG_Normal { get; set; }
-        public int RestingECG_ST { get; set; } // ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)
 
         // Navigation property
         [JsonIgnore]
@@ -53,7 +50,7 @@ namespace WebApiSEP7.Models // Ensure this is the correct namespace for your mod
 
     public float[] ToHeartFeaturesArray()
     {
-        return new float[] { RestingBP, Cholesterol, FastingBS, MaxHR, ExerciseAngina, Oldpeak, (float)ChestPainType, (float)STSlope, (float)RestingECG, RestingECG_LVH, RestingECG_Normal, RestingECG_ST };
+        return new float[] { RestingBP, Cholesterol, FastingBS, MaxHR, ExerciseAngina, Oldpeak, (float)ChestPainType, (float)STSlope, (float)RestingECG, };
     }
     }
 

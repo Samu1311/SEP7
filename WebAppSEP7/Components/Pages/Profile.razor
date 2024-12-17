@@ -1,0 +1,132 @@
+@page "/profile"
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+@inject CustomAuthenticationStateProvider AuthenticationStateProvider
+@inject IJSRuntime JSRuntime
+@using System.Security.Claims
+
+<div class="profile-page">
+    <!-- Header Section -->
+    @if (isLoading)
+    {
+        <p>Loading profile...</p>
+    }
+    else if (!string.IsNullOrEmpty(errorMessage)) 
+    {
+        <p class="error-message">@errorMessage</p>
+    }
+    else if (!isUserLoggedIn)
+    {
+        <div class="not-logged-in-message">
+            <h2>Please <a href="/login">log into your account</a> to access your profile.</h2>
+        </div>
+    }
+    else
+    {
+        <div class="profile-header">
+            <h1 class="profile-name">Hi, @userProfile.Name</h1>
+        </div>
+
+        <!-- Card Section -->
+        <div class="profile-cards">
+            <div class="profile-card">
+                <h2>Personal Information</h2>
+                <p><strong>Name:</strong> @userProfile.Name</p>
+                <p><strong>Email:</strong> @userProfile.Email</p>
+                <p><strong>Phone:</strong> @userProfile.Phone</p>
+                <p><strong>Date of Birth:</strong> @(userProfile.DateOfBirth?.ToString("yyyy-MM-dd"))</p>
+                <p><strong>Gender:</strong> @userProfile.Gender</p>
+                <button class="btn btn-primary" @onclick="NavigateToEditProfile">
+                    Edit Info
+                </button>
+            </div>
+            <div class="profile-card">
+                <h2>Account Settings</h2>
+                <div class="button-group">
+                <button class="btn btn-danger">Deactivate Account</button>
+                <button class="btn btn-warning">Change Password</button>
+            </div>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private UserProfile userProfile = new UserProfile();
+    private bool isLoading = true;
+    private bool isUserLoggedIn = false;
+    private string errorMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        isLoading = true; 
+        await CheckAuthenticationState();
+        if (isUserLoggedIn)
+        {
+            await LoadUserFromDatabase();
+        }
+        isLoading = false;
+    }
+
+    private async Task CheckAuthenticationState()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var userClaims = authState.User;
+
+        isUserLoggedIn = userClaims.Identity != null && userClaims.Identity.IsAuthenticated;
+    }
+
+    private async Task LoadUserFromDatabase()
+{
+    try
+    {
+        Console.WriteLine("LoadUserProfile called");
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity != null && user.Identity.IsAuthenticated)
+        {
+            var userId = user.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+            if (int.TryParse(userId, out int parsedUserId))
+            {
+                var client = HttpClientFactory.CreateClient("SEP7API");
+                var response = await client.GetAsync($"user/profile/{parsedUserId}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    userProfile = await response.Content.ReadFromJsonAsync<UserProfile>();
+                }
+                else
+                {
+                    errorMessage = "Unable to fetch user data";
+                    Console.WriteLine($"Error loading profile: {response.ReasonPhrase}");
+                }
+            }
+            else
+            {
+                errorMessage = "User ID not found in authentication claims.";
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        errorMessage = $"An error occurred while loading the profile: {ex.Message}";
+        Console.WriteLine($"Error loading profile: {ex.Message}");
+    }
+}
+private void NavigateToEditProfile()
+    {
+        NavigationManager.NavigateTo("/edit-profile");
+    }
+
+    private class UserProfile
+{
+    public string Name { get; set; }
+            public string Email { get; set; }
+            public string Phone { get; set; }
+            public DateTime? DateOfBirth { get; set; } // New field for date of birth
+            public string Gender { get; set; } // New field for gender
+}
+
+}

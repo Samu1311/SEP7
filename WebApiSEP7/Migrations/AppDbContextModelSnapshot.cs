@@ -32,6 +32,41 @@ namespace WebApiSEP7.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("WebApiSEP7.Models.CustomerSatisfaction", b =>
+                {
+                    b.Property<int>("CustomerSatisfactionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Comfort")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Recommendation")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Satisfaction")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Score")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Transparency")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Usability")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CustomerSatisfactionId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("CustomerSatisfactions");
+                });
+
             modelBuilder.Entity("WebApiSEP7.Models.MedicalInformation", b =>
                 {
                     b.Property<int>("MedicalInformationId")
@@ -78,15 +113,6 @@ namespace WebApiSEP7.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("RestingECG")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RestingECG_LVH")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RestingECG_Normal")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RestingECG_ST")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("STSlope")
@@ -253,6 +279,17 @@ namespace WebApiSEP7.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("WebApiSEP7.Models.CustomerSatisfaction", b =>
+                {
+                    b.HasOne("WebApiSEP7.Models.User", "User")
+                        .WithOne("CustomerSatisfaction")
+                        .HasForeignKey("WebApiSEP7.Models.CustomerSatisfaction", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WebApiSEP7.Models.MedicalInformation", b =>
                 {
                     b.HasOne("WebApiSEP7.Models.User", "User")
@@ -330,6 +367,8 @@ namespace WebApiSEP7.Migrations
 
             modelBuilder.Entity("WebApiSEP7.Models.User", b =>
                 {
+                    b.Navigation("CustomerSatisfaction");
+
                     b.Navigation("MedicalInformation");
 
                     b.Navigation("PersonalInformation");
